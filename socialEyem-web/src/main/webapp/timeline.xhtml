@@ -19,11 +19,15 @@
                             <label for="inputComment"></label>
                             <textarea class="form-control" rows="6"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="inputWeb">Imagen</label>
+                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
+                        </div>
                         <div align="right">
                             <button type="submit" class="btn btn-action">eyem it!</button>
                         </div><br/><br/> 
-                        
-                        
+
+
                         Mostrando datos de mongo: <br/>
                         <hr/>
                         <ui:repeat value="#{usuarioBean.listaUsuario}" var="item">
@@ -36,7 +40,7 @@
                             </h:form>
                         </ui:repeat>
                         <hr/>
-                        
+
                         <br/><br/>
                         <!--post-->
                         <article class="post">

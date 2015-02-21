@@ -8,10 +8,6 @@ package com.eyem.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- *
- * @author YSF
- */
 @Document(collection = "usuario")
 public class Usuario {
 

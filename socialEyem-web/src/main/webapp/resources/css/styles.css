@@ -97,12 +97,33 @@ a:hover {
 /*********************************************************************
  
 
+                                LOGIN
+
+
+**********************************************************************/
+.contenidologin{
+    background: #f4f4f4 url(http://www.suescunpapel.com/content/2967/00938.jpg) top center;
+    background-size: cover;
+    color: #7C7C7C;
+    padding: 30px 0 35px 0;
+
+
+
+}
+
+
+
+
+
+/*********************************************************************
+ 
+
                                 HEADER
 
 
 **********************************************************************/
 #head {
-    background: #f4f4f4 url(/images/bg_head.jpg) top center;
+    background: #f4f4f4 url(http://www.suescunpapel.com/content/2967/00938.jpg) top center;
     background-size: cover;
     color: #7C7C7C;
     padding: 30px 0 35px 0;
@@ -817,16 +838,16 @@ footer.entry-meta .meta-in {
 /* LOGIN
 /////////////////////////////////////////////////////////////////////*/
 .centerlogin {
-position: absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-margin: auto;
-background: #83C24A;
-height: 100px;
-width: 200px;
-box-shadow: 0 0 4px rgba(0,0,0,.3);
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin: auto;
+    background: #83C24A;
+    height: 100px;
+    width: 200px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
 }
 
 

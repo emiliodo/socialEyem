@@ -22,7 +22,22 @@
                         <div align="right">
                             <button type="submit" class="btn btn-action">eyem it!</button>
                         </div><br/><br/> 
-
+                        
+                        
+                        Mostrando datos de mongo: <br/>
+                        <hr/>
+                        <ui:repeat value="#{usuarioBean.listaUsuario}" var="item">
+                            <h:form>
+                                #{item.email}<br/>
+                                #{item.nombre}<br/>
+                                #{item.imagen}<br/>
+                                #{item.numGrupos}<br/>
+                                <hr/>
+                            </h:form>
+                        </ui:repeat>
+                        <hr/>
+                        
+                        <br/><br/>
                         <!--post-->
                         <article class="post">
                             <header class="entry-header">
@@ -39,7 +54,7 @@
                             <!--contenido-->
                             <div class="entry-content"> 
                                 <p><img alt="" src="resources/images/mac.jpg"/></p>
-                                <p> #{usuarioBean.mostrarUsuarios()}</p>
+                                <p> #{usuarioBean.nombre}</p>
                             </div> 
                         </article>						
                     </div> 

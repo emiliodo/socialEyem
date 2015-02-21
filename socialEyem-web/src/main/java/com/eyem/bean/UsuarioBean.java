@@ -14,10 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author maramec
- */
+
+
+
+
+
+
+
+
+
 @Component
 @Scope("session")
 public class UsuarioBean implements Serializable {

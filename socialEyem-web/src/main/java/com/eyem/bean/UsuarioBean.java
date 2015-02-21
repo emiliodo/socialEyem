@@ -9,22 +9,14 @@ import com.eyem.entity.Usuario;
 import com.eyem.services.UsuarioService;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 
-
-
-
-
-
-
-
-
 @Component
-@Scope("session")
 public class UsuarioBean implements Serializable {
     
     private String email;
@@ -33,16 +25,30 @@ public class UsuarioBean implements Serializable {
     private String imagen;
     private List<Usuario> listaUsuario;
 
-    @Inject
     @Autowired
     UsuarioService usuarioService;
 
+    @PostConstruct
+    public void inicializar(){
+        listaUsuario = usuarioService.buscarTodos();
+        nombre = listaUsuario.get(0).getNombre();
+        System.out.println("---------------------------SGSDFGSDFGSDFG------------------------"+nombre);
+    }
+    
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(List<Usuario> listaUsuario) {
+        this.listaUsuario = listaUsuario;
     }
 
     public String getNombre() {
@@ -69,8 +75,5 @@ public class UsuarioBean implements Serializable {
         this.imagen = imagen;
     }
     
-    public List<Usuario> mostrarUsuarios(){
-        return usuarioService.buscarTodos();
-       
-    }
+    
 }

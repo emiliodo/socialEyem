@@ -10,6 +10,7 @@ import com.eyem.services.UsuarioService;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,9 +29,11 @@ public class UsuarioBean implements Serializable {
 
     @PostConstruct
     public void inicializar(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        //String googeldata = (String) context.getExternalContext().getSessionMap().get("googleAccountData");
         listaUsuario = usuarioService.buscarTodos();
         nombre = listaUsuario.get(0).getNombre();
-        System.out.println("---------------------------SGSDFGSDFGSDFG------------------------"+nombre);
+        System.out.println("datos google = "+ context.getExternalContext().getSessionMap().get("googleAccountData"));
     }
     
     public String getEmail() {

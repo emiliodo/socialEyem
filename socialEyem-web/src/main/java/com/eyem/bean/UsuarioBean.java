@@ -8,34 +8,35 @@ package com.eyem.bean;
 import com.eyem.entity.Usuario;
 import com.eyem.services.UsuarioService;
 import java.io.Serializable;
+import java.util.Enumeration;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class UsuarioBean implements Serializable {
-    
+
     private String email;
     private String nombre;
     private int numGrupos;
     private String imagen;
     private List<Usuario> listaUsuario;
+    private String sessionData;
 
     @Autowired
     UsuarioService usuarioService;
 
     @PostConstruct
-    public void inicializar(){
-        FacesContext context = FacesContext.getCurrentInstance();
-        //String googeldata = (String) context.getExternalContext().getSessionMap().get("googleAccountData");
+    public void inicializar() {
+
         listaUsuario = usuarioService.buscarTodos();
         nombre = listaUsuario.get(0).getNombre();
-        System.out.println("datos google = "+ context.getExternalContext().getSessionMap().get("googleAccountData"));
+
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -75,6 +76,20 @@ public class UsuarioBean implements Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
-    
+
+    public void actualizarDatosSession() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        if (session != null) {
+            System.out.println("Hay algo en session");
+            if (null != session.getAttribute("TOMAYA")) {
+                System.out.println(session.getAttribute("TOMAYA"));
+            } else {
+                System.out.println("TOMAYA == NULL");
+            }
+        } else {
+            System.out.println("Session vacia.");
+        }
+    }
+
 }

@@ -21,6 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputWeb">Imagen</label>
+                            #{usuarioBean.actualizarDatosSession()}
                             <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
                         </div>
                         <div align="right">
@@ -33,7 +34,7 @@
                         <ui:repeat value="#{usuarioBean.listaUsuario}" var="item">
                             <h:form>
                                 #{item.email}<br/>
-                                #{item.name}<br/>
+                                #{item.nombre}<br/>
                                 #{item.imagen}<br/>
                                 #{item.numGrupos}<br/>
                                 <hr/>
@@ -48,7 +49,7 @@
                                 <!--fecha-->
 
                                 <!--Nombre usuario-->
-                                <img class="img-circle-small" src="resources/images/avatar_woman.png" alt=""/>
+                                <img class="img-circle-small" src="resources/images/avatar_man.png" alt=""/>
                                 <!--Enlace a perfil de usuario-->
                                 <a href="perfil.xhtml" rel="bookmark">Nombre usuario</a>
                                 <div class="entry-meta"> 

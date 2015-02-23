@@ -27,6 +27,10 @@ public class Grupo {
         this.creador = creador;
         this.listaUsuarios = listaUsuarios;
     }
+    
+    public Grupo(){
+        
+    }
 
     public Long getIdGrupo() {
         return idGrupo;

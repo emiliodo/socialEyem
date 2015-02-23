@@ -6,7 +6,9 @@
 package com.eyem.repository;
 
 import com.eyem.entity.Grupo;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 /**
 /**
@@ -15,4 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 public interface GrupoRepository extends MongoRepository<Grupo, Long>{
     
+   
+    @Query("{'listaUsuarios.email':?0}")
+    public List<Grupo> findAllGrupoByEmailUser(String emailUser);
 }

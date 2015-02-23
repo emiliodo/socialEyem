@@ -15,38 +15,19 @@
                     <div class="col-sm-8 col-sm-offset-2">
 
                         <h1>MIS GRUPOS</h1>
-
-                        <!--añadir post-->
-                        <div class="form-group">
-                            <label for="inputComment"></label>
-                            <textarea class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputWeb">Imagen</label>
-                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
-                        </div>
                         <div align="right">
-                            <button type="submit" class="btn btn-action">eyem it!</button>
+                            <p:dataTable var="grupo" value="#{grupoBean.listaGrupo}">
+                                <f:facet name="header">
+                                    Grupos a los que pertenezco
+                                </f:facet>
+                                <p:column headerText="Nombre">
+                                    <h:outputText value="#{grupo.nombreGrupo}" />
+                                </p:column>
+                                <p:column style="width:32px;text-align: center">
+                                </p:column>
+                            </p:dataTable>
+                            <h:button  outcome="crearGrupo.xhtml" class="btn btn-action" value="Crear Grupo"></h:button>
                         </div><br/><br/> 
-
-                        <!--post-->
-                        <article class="post">
-                            <header class="entry-header">
-                                <!--fecha-->
-                                <div class="entry-meta"> 
-                                    <span class="posted-on"><time class="entry-date published" >June 17, 2013</time></span>			
-                                </div>
-                                <!--Nombre usuario-->
-                                <img class="img-circle-small" src="resources/images/avatar_woman.png" alt=""/>
-                                <!--Enlace a perfil de usuario-->
-                                <a href="single.html" rel="bookmark">Nombre usuario</a>
-                            </header>
-                            <!--contenido-->
-                            <div class="entry-content"> 
-                                <p><img alt="" src="resources/images/mac.jpg"/></p>
-                                <p>contenido</p>
-                            </div> 
-                        </article>						
                     </div> 
                 </div>
             </div>

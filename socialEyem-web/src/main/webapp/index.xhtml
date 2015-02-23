@@ -30,35 +30,37 @@
     <h:body>
 
 
-    <center>
+        <center>
 
-        <div id="contenidologin" style=" margin:0 auto;">
-            <h1>social eyem</h1>
-            <span id="signinButton">
-                <button class="g-signin"
-                        data-scope="email"
-                        data-clientid="1004446024731-a4bo8mvhguacp0r41gq7gpee44fqmvk1.apps.googleusercontent.com"
-                        data-callback="onSignInCallback"
-                        data-theme="dark"
-                        data-cookiepolicy="single_host_origin">
-                </button>
-            </span>
+            <div id="contenidologin" style=" margin:0 auto;">
+                <h1>social eyem</h1>
+                <span id="signinButton">
+                    <button class="g-signin"
+                            data-scope="email"
+                            data-clientid="1004446024731-a4bo8mvhguacp0r41gq7gpee44fqmvk1.apps.googleusercontent.com"
+                            data-callback="onSignInCallback"
+                            data-theme="dark"
+                            data-cookiepolicy="single_host_origin">
+                    </button>
+                </span>
 
-            <!-- Container with the Sign-In button. -->
-            <div id="gConnect" class="button">
+                <!-- Container with the Sign-In button. -->
+                <div id="gConnect" class="button">
 
-                <!-- Textarea for outputting data -->
-                <div id="response" class="hide">
-                    <textarea id="responseContainer" style="width:80%; height:150px"></textarea>
+                    <!-- Textarea for outputting data -->
+                    <div id="response" class="hide">
+                        <textarea id="responseContainer" style="width:80%; height:150px"></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
-    </center>
+        </center>
 
 
-    
 
-</h:body>
+
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
 </html>
 
 

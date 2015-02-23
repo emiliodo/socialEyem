@@ -29,4 +29,8 @@ public class PostService {
         return true;
     }
 
+    public List<Post> findAllPostByEmailUser(String emailUser){
+
+        return postRepository.findAllPostByEmailUser(emailUser);
+    }
 }

@@ -5,7 +5,9 @@
  */
 package com.eyem.repository;
 import com.eyem.entity.Post;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 /**
@@ -16,4 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends MongoRepository<Post, Long>{
     
+    @Query("{'creador.email':?0}")
+    public List<Post> findAllPostByEmailUser(String emailUser);
 }

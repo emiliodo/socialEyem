@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -30,35 +29,41 @@
     <h:body>
 
 
-    <center>
+        <center>
 
-        <div id="contenidologin" style=" margin:0 auto;">
-            <h1>social eyem</h1>
-            <span id="signinButton">
-                <button class="g-signin"
-                        data-scope="email"
-                        data-clientid="1004446024731-a4bo8mvhguacp0r41gq7gpee44fqmvk1.apps.googleusercontent.com"
-                        data-callback="onSignInCallback"
-                        data-theme="dark"
-                        data-cookiepolicy="single_host_origin">
-                </button>
-            </span>
+            <div id="contenidologin" style=" margin:0 auto;">
+                <h1>social eyem</h1>
+                <span id="signinButton">
+                    <button class="g-signin"
+                            data-scope="email"
+                            data-clientid="1004446024731-a4bo8mvhguacp0r41gq7gpee44fqmvk1.apps.googleusercontent.com"
+                            data-callback="onSignInCallback"
+                            data-theme="dark"
+                            data-cookiepolicy="single_host_origin">
+                    </button>
+                </span>
 
-            <!-- Container with the Sign-In button. -->
-            <div id="gConnect" class="button">
 
-                <!-- Textarea for outputting data -->
-                <div id="response" class="hide">
-                    <textarea id="responseContainer" style="width:80%; height:150px"></textarea>
+                <h:form id="poi-form">
+                    <h:inputText id="poi" />
+                    <h:commandButton action="#{usuarioBean.actualizarDatosSession()}"/>
+                </h:form>
+                
+                <!-- Container with the Sign-In button. -->
+                <div id="gConnect" class="button">
+
+                    <!-- Textarea for outputting data -->
+                    <div id="response" class="hide">
+                        <textarea id="responseContainer" style="width:80%; height:150px"></textarea>
+                    </div>
                 </div>
             </div>
-        </div>
-    </center>
+        </center>
 
 
-    
 
-</h:body>
+
+    </h:body>
 </html>
 
 

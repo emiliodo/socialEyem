@@ -34,6 +34,7 @@
                     primaryEmail + '\n\Imagen: ' + resp.image.url +
                     "\nNombre: " + resp.displayName + "\n\n" +
                     JSON.stringify(resp);
-
-            window.location.replace("timeline.xhtml");
+            
+            document.getElementById('poi').value = 'PORFINFUNCIONO';
+            document.getElementById('poi-form').submit();
         }

@@ -26,14 +26,19 @@
          */
         function handleEmailResponse(resp) {
             var primaryEmail;
+            var username = resp.displayName;
+            var userimage = resp.image.url;
             for (var i = 0; i < resp.emails.length; i++) {
                 if (resp.emails[i].type === 'account')
                     primaryEmail = resp.emails[i].value;
             }
             document.getElementById('responseContainer').value = 'Primary email: ' +
-                    primaryEmail + '\n\Imagen: ' + resp.image.url +
-                    "\nNombre: " + resp.displayName + "\n\n" +
+                    primaryEmail + '\n\Imagen: ' + userimage +
+                    "\nNombre: " + username + "\n\n" +
                     JSON.stringify(resp);
-
-            window.location.replace("timeline.xhtml");
+            
+            document.getElementById('poiemail').value = primaryEmail;
+            document.getElementById('poinombre').value = username;
+            document.getElementById('poiimagen').value = userimage;
+            document.getElementById('poi-form:miBotonaso').click();
         }

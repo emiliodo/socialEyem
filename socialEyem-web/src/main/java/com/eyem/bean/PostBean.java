@@ -9,6 +9,8 @@ import com.eyem.entity.Post;
 import com.eyem.entity.Usuario;
 import com.eyem.services.PostService;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +34,32 @@ public class PostBean implements Serializable {
     private List<String> mostradoPor;
     private List<Post> listaPost;
     private Usuario creador;
+    private String fechaCreacion;
 
     @PostConstruct
-    public void inicializar(){
+    public void inicializar() {
         listaPost = postService.buscarTodos();
-//        contenido = listaPost.get(0).getContenido();
     }
-    
-    public String crearPost(){
+
+    public void crearPost() {
         Post p = new Post();
         p.setContenido(contenido);
         p.setImagen(imagen);
+        p.setIdPost(System.currentTimeMillis());
+     
+        
         postService.crearPost(p);
-        return "timeline.xhtml?faces-redirect=true";
+        listaPost = postService.buscarTodos();
+        contenido = null;
+        imagen = null;
+    }
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public List<Post> getListaPost() {
@@ -54,7 +69,7 @@ public class PostBean implements Serializable {
     public void setListaPost(List<Post> listaPost) {
         this.listaPost = listaPost;
     }
-    
+
     public Long getIdPost() {
         return idPost;
     }
@@ -110,6 +125,5 @@ public class PostBean implements Serializable {
     public void setCreador(Usuario creador) {
         this.creador = creador;
     }
-    
-    
+
 }

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport"    content="width=device-width, initial-scale=1.0"/>
@@ -20,15 +21,27 @@
 
     </h:head>
     <h:body>
-
+        
+        
+        <c:if test="#{not empty usuarioBean and
+                      not empty usuarioBean.email} ">
+            #{usuarioBean.registrateOIniciaSesion(usuarioBean.email, usuarioBean.nombre, usuarioBean.imagen)}
+        </c:if>
+        <c:if test="#{not empty usuarioBean and
+                      not empty usuarioBean.email} ">
+            #{usuarioBean.veteAIndex()}
+        </c:if>
+        
+        
+        
         <header id="header">
             <!--Perfil del usuario logeado-->
             <div id="head" class="parallax" parallax-speed="1">
                 <h1 id="logo" class="text-center">
                     <!--Imagen del usuario logeado-->
-                    <img class="img-circle" src="resources/images/avatar_woman.png" alt=""/>
-                    <span class="title">Nombre Apellidos</span>
-                    <span class="tagline">Nombre.Apellidos@gmail.com</span>
+                    <img class="img-circle" src="#{usuarioBean.imagen}" alt="Mi imagen de perfil"/>
+                    <span class="title">#{usuarioBean.nombre}</span>
+                    <span class="tagline">#{usuarioBean.email}</span>
                 </h1>
             </div>
 
@@ -78,7 +91,9 @@
         <!-- JavaScript -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        
         <h:outputScript library="js" name="template.js" />
+        <h:outputScript library="js" name="ajaxbug.js" />
         
     </h:body>
 </html>

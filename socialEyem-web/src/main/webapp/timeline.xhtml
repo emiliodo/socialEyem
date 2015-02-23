@@ -15,32 +15,49 @@
                     <div class="col-sm-8 col-sm-offset-2">
 
                         <!--añadir post-->
-                        <div class="form-group">
-                            <label for="inputComment"></label>
-                            <textarea class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputWeb">Imagen</label>
-                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
-                        </div>
-                        <div align="right">
-                            <button type="submit" class="btn btn-action">eyem it!</button>
-                        </div><br/><br/> 
-
-
-                        Mostrando datos de mongo: <br/>
-                        <hr/>
-<!--                        <h:outputText value="#{postBean.contenido}"/>-->
-                        Mostrando post en mongo: <br/>
-                        <hr/>
                         <h:form>
-                        <h:inputText value="#{postBean.contenido}"/>
-                        <hr/>
-                       
-                        <h:commandButton action="#{postBean.crearPost}" value="Crear"/>
- </h:form>
-                        
+                            <div class="form-group">
+                                <label for="inputComment"></label>
+                                <!--                            <textarea class="form-control" rows="6"></textarea>-->
+                                <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputWeb">Imagen</label>
+                                <!--                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>-->
+                                <h:inputTextarea class="form-control" rows="1" value="#{postBean.imagen}"/>
+                            </div>
+                            <div align="right">
+                                <!--                            <button type="submit" class="btn btn-action">eyem it!</button>-->
+                                <h:commandButton class="btn btn-action"  action="#{postBean.crearPost}" value="Crear"/>
+                            </div><br/><br/> 
+                        </h:form>
 
+                        
+                        <h:form>
+                            Mostrando usuarios en mongo: <br/>
+                            <hr/>
+                            <ui:repeat value="#{usuarioBean.listaUsuario}" var="usuario">
+                                #{usuario.email}<br/>
+                                #{usuario.nombre}<br/>
+                                #{usuario.imagen}<br/>
+                                #{usuario.numGrupos}<br/>
+                                <hr/>
+                            </ui:repeat>
+                            <hr/>
+                        </h:form>
+                        <h:form>
+                            Mostrando post en mongo: <br/>
+                            <ui:repeat value="#{postBean.listaPost}" var="post">
+                                #{post.idPost}<br/>
+                                #{post.creador}<br/>
+                                #{post.contenido}<br/>
+                                #{post.imagen}<br/>
+                                #{post.tipo}<br/>
+                                <hr/>
+                            </ui:repeat>
+                        </h:form>
+                        
+                        
                         <br/><br/>
                         <!--post-->
                         <article class="post">

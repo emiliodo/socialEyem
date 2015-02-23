@@ -35,13 +35,14 @@ public class PostBean implements Serializable {
 
     @PostConstruct
     public void inicializar(){
-//        listaPost = postService.buscarTodos();
+        listaPost = postService.buscarTodos();
 //        contenido = listaPost.get(0).getContenido();
     }
     
     public void crearPost(){
         Post p = new Post();
         p.setContenido(contenido);
+        p.setImagen(imagen);
         postService.crearPost(p);
     }
 

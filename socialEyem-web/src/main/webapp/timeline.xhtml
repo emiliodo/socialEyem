@@ -13,20 +13,20 @@
             <div class="container">
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
-                        
+
                         <h:panelGroup id="cont" layout="block">
-                            
+
                             <h:form id="form_crear">
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
                                 </div>
                                 <div class="form-group">
-                                    Imagen
-                                    <h:inputTextarea rows="1" class="form-control" id="inputWeb" value="#{postBean.imagen}" />
+                                    url imagen
+                                    <h:inputTextarea rows="1" class="form-control" value="#{postBean.imagen}" />
                                 </div>   
                                 <div align="right">
-                                    <h:commandButton class="btn btn-action" type="submit" value="Crear">
+                                    <h:commandButton class="btn-action" type="submit" value="Crear">
                                         <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost}"/>
                                     </h:commandButton>
                                 </div><br/>          
@@ -37,9 +37,16 @@
                                     <header class="entry-header">
                                         <img class="img-circle-small" src="resources/images/avatar_man.png" alt=""/>
                                         <a href="perfil.xhtml" rel="bookmark">Nombre usuario</a>
+
                                         <div class="entry-meta"> 
-                                            <span class="posted-on"><time class="entry-date published" >June 17, 2013</time></span>			
+                                            <span class="posted-on">#{p.idPost}</span>			
                                         </div>
+
+
+                                        <h:outputText value="#{p.idPost}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm"/>
+                                        </h:outputText>
+
                                     </header>
                                     #{p.contenido}
                                     <div class="entry-content"> 
@@ -48,7 +55,7 @@
                                     </div> 
                                 </article>
                             </ui:repeat>
-                            
+
                         </h:panelGroup>
                     </div> 
                 </div>

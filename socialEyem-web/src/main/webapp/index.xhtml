@@ -45,15 +45,17 @@
 
 
                 <h:form id="poi-form">
-                    <h:inputText id="poi" />
-                    <h:commandButton action="#{usuarioBean.actualizarDatosSession()}"/>
-                </h:form>
+                        <input type="text" id="poiemail" name="poiemail" />
+                        <input type="text" id="poinombre" name="poinombre"/>
+                        <input type="text" id="poiimagen" name="poiimagen"/><br/>
+                        <h:commandButton action="#{usuarioBean.actualizarDatosSession()}" value="Entrar a EYEM"/>
+                    </h:form>
                 
                 <!-- Container with the Sign-In button. -->
                 <div id="gConnect" class="button">
 
                     <!-- Textarea for outputting data -->
-                    <div id="response" class="hide">
+                    <div id="response" class="hidden">
                         <textarea id="responseContainer" style="width:80%; height:150px"></textarea>
                     </div>
                 </div>

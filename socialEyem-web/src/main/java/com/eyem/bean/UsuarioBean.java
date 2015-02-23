@@ -10,6 +10,8 @@ import com.eyem.services.UsuarioService;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -74,7 +76,11 @@ public class UsuarioBean implements Serializable {
     }
 
     public String actualizarDatosSession() {
-        System.out.println("funciono!");
+        HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        this.email= request.getParameter("poiemail");
+        this.nombre =  request.getParameter("poinombre");
+        this.imagen =  request.getParameter("poiimagen");
+        this.imagen = this.imagen.substring(0, this.imagen.length() - 5);
         return "timeline";
     }
     

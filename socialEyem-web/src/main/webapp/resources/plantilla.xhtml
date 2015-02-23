@@ -39,9 +39,9 @@
             <div id="head" class="parallax" parallax-speed="1">
                 <h1 id="logo" class="text-center">
                     <!--Imagen del usuario logeado-->
-                    <img class="img-circle" src="resources/images/avatar_woman.png" alt=""/>
-                    <span class="title">Nombre Apellidos</span>
-                    <span class="tagline">email=#{usuarioBean.email}</span>
+                    <img class="img-circle" src="#{usuarioBean.imagen}" alt="Mi imagen de perfil"/>
+                    <span class="title">#{usuarioBean.nombre}</span>
+                    <span class="tagline">#{usuarioBean.email}</span>
                 </h1>
             </div>
 
@@ -91,6 +91,7 @@
         <!-- JavaScript -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        
         <h:outputScript library="js" name="template.js" />
         <h:outputScript library="js" name="ajaxbug.js" />
         

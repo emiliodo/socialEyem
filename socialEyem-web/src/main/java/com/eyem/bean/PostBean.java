@@ -46,6 +46,7 @@ public class PostBean implements Serializable {
         p.setContenido(contenido);
         p.setImagen(imagen);
         p.setIdPost(System.currentTimeMillis());
+        p.setTipo(tipo);
      
         
         postService.crearPost(p);

@@ -39,12 +39,14 @@ public class PostBean implements Serializable {
 //        contenido = listaPost.get(0).getContenido();
     }
     
-    public String crearPost(){
+    public void crearPost(){
         Post p = new Post();
         p.setContenido(contenido);
         p.setImagen(imagen);
         postService.crearPost(p);
-        return "timeline.xhtml?faces-redirect=true";
+        listaPost = postService.buscarTodos();
+        contenido = null;
+        imagen = null;
     }
 
     public List<Post> getListaPost() {

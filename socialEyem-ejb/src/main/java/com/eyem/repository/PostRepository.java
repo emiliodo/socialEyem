@@ -6,11 +6,13 @@
 package com.eyem.repository;
 import com.eyem.entity.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 /**
  *
  * @author YSF
  */
+@Component
 @Repository
 public interface PostRepository extends MongoRepository<Post, Long>{
     

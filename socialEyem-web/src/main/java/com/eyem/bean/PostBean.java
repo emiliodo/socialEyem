@@ -5,10 +5,12 @@
  */
 package com.eyem.bean;
 
+import com.eyem.entity.Post;
 import com.eyem.entity.Usuario;
 import com.eyem.services.PostService;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +30,29 @@ public class PostBean implements Serializable {
     private String imagen;
     private String video;
     private List<String> mostradoPor;
+    private List<Post> listaPost;
     private Usuario creador;
 
+    @PostConstruct
+    public void inicializar(){
+//        listaPost = postService.buscarTodos();
+//        contenido = listaPost.get(0).getContenido();
+    }
+    
+    public void crearPost(){
+        Post p = new Post();
+        p.setContenido(contenido);
+        postService.crearPost(p);
+    }
+
+    public List<Post> getListaPost() {
+        return listaPost;
+    }
+
+    public void setListaPost(List<Post> listaPost) {
+        this.listaPost = listaPost;
+    }
+    
     public Long getIdPost() {
         return idPost;
     }

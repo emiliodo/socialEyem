@@ -30,16 +30,15 @@
 
                         Mostrando datos de mongo: <br/>
                         <hr/>
-                        <ui:repeat value="#{usuarioBean.listaUsuario}" var="item">
-                            <h:form>
-                                #{item.email}<br/>
-                                #{item.nombre}<br/>
-                                #{item.imagen}<br/>
-                                #{item.numGrupos}<br/>
-                                <hr/>
-                            </h:form>
-                        </ui:repeat>
-
+<!--                        <h:outputText value="#{postBean.contenido}"/>-->
+                        Mostrando post en mongo: <br/>
+                        <hr/>
+                        <h:form>
+                        <h:inputText value="#{postBean.contenido}"/>
+                        <hr/>
+                       
+                        <h:commandButton action="#{postBean.crearPost}" value="Crear"/>
+ </h:form>
                         
 
                         <br/><br/>

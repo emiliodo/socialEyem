@@ -5,7 +5,9 @@
  */
 package com.eyem.services;
 
+import com.eyem.entity.Post;
 import com.eyem.repository.PostRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,5 +19,14 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+    
+    public List<Post> buscarTodos(){
+        return postRepository.findAll();
+    }
+    
+    public boolean crearPost(Post p){
+        postRepository.insert(p);
+        return true;
+    }
 
 }

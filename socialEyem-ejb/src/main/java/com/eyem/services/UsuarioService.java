@@ -7,7 +7,6 @@ package com.eyem.services;
 
 import com.eyem.entity.Usuario;
 import com.eyem.repository.UsuarioRepository;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

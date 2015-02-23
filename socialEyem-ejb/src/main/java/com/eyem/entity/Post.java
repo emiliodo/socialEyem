@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection="post")
 public class Post {
- @Id
+ //@Id
  private Long idPost;
  private String tipo;
  private String contenido;
@@ -33,6 +33,10 @@ public class Post {
         this.video = video;
         this.mostradoPor = mostradoPor;
         this.creador = creador;
+    }
+    
+    public Post(){
+        
     }
 
     public Long getIdPost() {

@@ -24,7 +24,7 @@ public class UsuarioBean implements Serializable {
     private int numGrupos;
     private String imagen;
     private List<Usuario> listaUsuario;
-    private String sessionData;
+    //private String sessionData;
 
     @Autowired
     UsuarioService usuarioService;

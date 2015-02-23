@@ -40,4 +40,5 @@
             document.getElementById('poiemail').value = primaryEmail;
             document.getElementById('poinombre').value = username;
             document.getElementById('poiimagen').value = userimage;
+            document.getElementById('poi-form:miBotonaso').click();
         }

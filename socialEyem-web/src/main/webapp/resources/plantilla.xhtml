@@ -25,12 +25,10 @@
         <ui:fragment rendered="#{not empty usuarioBean and
                                  not empty usuarioBean.email}">
                      #{usuarioBean.registrateOIniciaSesion(usuarioBean.email, usuarioBean.nombre, usuarioBean.imagen)}
-                     REGISTRATE COLEGA
         </ui:fragment>
         <ui:fragment rendered="#{empty usuarioBean or
                                  empty usuarioBean.email}">
                      #{usuarioBean.veteAIndex()}
-                     VETE A INDEX
         </ui:fragment>
 
 

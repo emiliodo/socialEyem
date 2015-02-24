@@ -41,4 +41,8 @@ public class PostService {
         return postRepository.findPublicPost();
 
     }
+
+    public List<Post> findPostReplicados() {
+        return postRepository.findPublicPost();
+    }
 }

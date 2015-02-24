@@ -10,9 +10,12 @@ import com.eyem.entity.Usuario;
 import com.eyem.services.PostService;
 import com.eyem.services.UsuarioService;
 import java.io.Serializable;
+import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,6 +53,13 @@ public class PostBean implements Serializable {
         Post p = new Post();
         Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
+        try {
+            java.net.URL url = new java.net.URL(imagen);
+            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null,url.toString() + " linked by " + u.getEmail());
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex);
+            imagen = null;
+        }
         p.setImagen(imagen);
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);

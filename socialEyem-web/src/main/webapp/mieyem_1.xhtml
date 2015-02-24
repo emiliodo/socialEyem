@@ -35,7 +35,7 @@
                             </h:form>
                             
                             
-                            <ui:repeat var="p" value="#{postBean.listaPostReplicados(usuarioBean.email)}">
+                            <ui:repeat var="p" value="#{postBean.listaPostReplicados('miliodopi@gmail.com')}">
                                 <article class="post">
                                     <header class="entry-header">
                                         <!--Usuario del post-->
@@ -57,7 +57,7 @@
                                         <br/><br/>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    <p>#{p.contenido}</p><hr/>
+                                    #{p.contenido}<hr/>
                                 </article>
                             </ui:repeat>
                             

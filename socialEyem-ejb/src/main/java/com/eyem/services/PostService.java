@@ -46,4 +46,10 @@ public class PostService {
     public List<Post> findPostReplicados(String email) {
         return postRepository.findPostReplicados(email);
     }
+    
+    public boolean replicarPost(Post po){
+        postRepository.delete(po);
+        postRepository.insert(po);
+        return true;
+    }
 }

@@ -53,7 +53,7 @@ public class PostBean implements Serializable {
         Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
         String pattern = "https?:\\/\\/(?:[0-9A-Z-]+\\.)?(?:youtu\\.be\\/|youtube\\.com\\S*[^\\w\\-\\s])([\\w\\-]{11})(?=[^\\w\\-]|$)(?![?=&+%\\w]*(?:['\"][^<>]*>|<\\/a>))[?=&+%\\w]*";
-        
+
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = compiledPattern.matcher(imagen);
         while (matcher.find()) {
@@ -84,19 +84,26 @@ public class PostBean implements Serializable {
 
     public List<Post> listaPostPublicos() {
         List<Post> lista = postService.findPublicPost();
-        if (lista == null || lista.isEmpty())
+        if (lista == null || lista.isEmpty()) {
             return null;
-        else
+        } else {
             return lista;
+        }
     }
 
     public List<Post> listaPostUsuario(String email, String tipo) {
         return postService.findPostUser(email, tipo);
     }
-    
-    public List<Post> listaPostReplicados(String email){
+
+    public List<Post> listaPostReplicados(String email) {
         return postService.findPostReplicados(email);
     }
+
+//    public List<Post> replicarPost(Post p) {
+//
+//        Post np = new Post();
+//
+//    }
 
     public String getUserEmailPerfil() {
         return userEmailPerfil;

@@ -23,7 +23,7 @@
                                     url multimedia
                                     <h:inputTextarea rows="1" class="form-control" value="#{postBean.imagen}" />
                                 </div>
-                                
+
                                 <div align="right">  
                                     <h:commandButton class="btn-action" type="submit" value="eyem it">
                                         <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost(usuarioBean.email , 'publico')}"/>
@@ -60,7 +60,7 @@
                                     <!--iconos post-->
                                     <div class="postfooter">
                                         <h:form>
-                                            <h:commandLink  >
+                                            <h:commandLink action="#{postBean.replicarPost(p, p.creador.email)}">
                                                 <h:graphicImage height="23" width="23" library="images" name="reyem.png" alt="reyem" />
                                             </h:commandLink>
                                         </h:form>
@@ -73,6 +73,5 @@
                 </div>
             </div>
         </main>
-
     </ui:define>
 </ui:composition>

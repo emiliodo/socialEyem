@@ -17,10 +17,9 @@
                         <h:panelGroup id="cont" layout="block">
 
                             <h:form id="form_crear">
-
                                 <div class="form-group">
                                     Contenido
-                                    <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
+                                    <h:inputTextarea class="form-control" rows="4" value="#{postBean.contenido}"/>
                                 </div>
                                 <div class="form-group">
                                     url multimedia
@@ -33,7 +32,8 @@
                                 </div>
                                 <br/>
                             </h:form>
-
+                            
+                            LISTA DE POST PRIVADOS
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'privado')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -41,17 +41,11 @@
                                         <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
                                         #{p.creador.nombre}
                                         <!--Hora-->
-                                        <h:graphicImage height="35" width="22" value="resources/images/privado.jpg" alt="post privado" />                                        
+                                        <h:graphicImage height="30" width="22" value="resources/images/privado.jpg" alt="post privado" />                                        
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
-                                            <h:form>
-                                                <h:commandLink action="#{postDeleteBean.borrarPost(p)}">
-                                                    <h:graphicImage value="resources/images/iconoborrar.png"/>
-                                                </h:commandLink>
-                                            </h:form>
-
                                         </div>
                                     </header>
                                     <!--Imagen del post-->
@@ -63,10 +57,19 @@
                                         <br/><br/>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    <p>#{p.contenido}</p><hr/>
+                                    <p>#{p.contenido}</p>
+                                    <div class="postfooter">
+                                        <h:form>
+                                            <h:commandLink action="#{postDeleteBean.borrarPost(p)}">
+                                                <h:graphicImage height="23" width="23" value="resources/images/iconoborrar.png"/>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </div>  
+                                    <hr/>
                                 </article>
                             </ui:repeat>
-
+                            
+                            LISTA DE POST PUBLICOS DE UN USUARIO
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -79,11 +82,6 @@
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
                                         </div>
-                                        <h:form>
-                                            <h:commandLink action="#{postDeleteBean.borrarPost(p.idPost)}">
-                                                <h:graphicImage value="resources/images/iconoborrar.png"/>
-                                            </h:commandLink>
-                                        </h:form>
                                     </header>
                                     <!--Imagen del post-->
                                     <h:panelGroup rendered="#{not empty p.imagen}">
@@ -94,7 +92,42 @@
                                         <br/><br/>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    <p>#{p.contenido}</p><hr/>
+                                    <p>#{p.contenido}</p>
+                                    <div class="postfooter">
+                                        <h:form>
+                                            <h:commandLink action="#{postDeleteBean.borrarPost(p)}">
+                                                <h:graphicImage height="23" width="23" value="resources/images/iconoborrar.png"/>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </div>  
+                                    <hr/>
+                                </article>
+                            </ui:repeat>
+
+                            LISTA DE POST REPLICADOS
+                            <ui:repeat var="p" value="#{postBean.listaPostReplicados(p.creador.email)}">
+                                <article class="post">
+                                    <header class="entry-header">
+                                        <!--Usuario del post-->
+                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                        #{p.creador.nombre}
+                                        <!--Hora-->                                        
+                                        <div class="fecha">
+                                            <h:outputText value="#{p.idPost}" >
+                                                <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
+                                            </h:outputText>
+                                        </div>
+                                    </header>
+                                    <!--Imagen del post-->
+                                    <h:panelGroup rendered="#{not empty p.imagen}">
+                                        <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{not empty p.video}">
+                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
+                                        <br/><br/>
+                                    </h:panelGroup>
+                                    <!--Contenido del post-->
+                                    #{p.contenido}<hr/>
                                 </article>
                             </ui:repeat>
 

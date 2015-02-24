@@ -21,5 +21,5 @@ public interface PostRepository extends MongoRepository<Post, Long>{
     @Query("{'creador.email':?0}")
     public List<Post> findAllPostByEmailUser(String emailUser);
     @Query("{'creador.email':?0,'tipo':?1}")
-    public List<Post> findPrivatePostUser(String email, String tipo);
+    public List<Post> findPostUser(String email, String tipo);
 }

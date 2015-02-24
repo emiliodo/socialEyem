@@ -33,8 +33,8 @@ public class PostService {
 
         return postRepository.findAllPostByEmailUser(emailUser);
     }
-    public List<Post> findPrivatePostUser(String emailUser,String tipo){
+    public List<Post> findPostUser(String emailUser,String tipo){
     
-    return postRepository.findPrivatePostUser(emailUser, tipo);
+    return postRepository.findPostUser(emailUser, tipo);
     }
 }

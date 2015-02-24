@@ -14,39 +14,54 @@
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
-                        <h1>MI EYEM</h1>
+                        <h:panelGroup id="cont" layout="block">
 
-                        <!--añadir post-->
-                        <div class="form-group">
-                            <label for="inputComment"></label>
-                            <textarea class="form-control" rows="6"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputWeb">Imagen</label>
-                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
-                        </div>
-                        <div align="right">
-                            <button type="submit" class="btn btn-action">eyem it!</button>
-                        </div><br/><br/> 
+                            <h:form id="form_crear">
 
-                        <!--reyems-->
-                        <article class="post">
-                            <header class="entry-header">
-                                <!--fecha-->
-                                <div class="entry-meta"> 
-                                    <span class="posted-on"><time class="entry-date published" >June 17, 2013</time></span>			
+                                <div class="form-group">
+                                    Contenido
+                                    <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
                                 </div>
-                                <!--Nombre usuario-->
-                                <img class="img-circle-small" src="resources/images/avatar_woman.png" alt=""/>
-                                <!--Enlace a perfil de usuario-->
-                                <a href="single.html" rel="bookmark">Nombre</a>
-                            </header>
-                            <!--contenido-->
-                            <div class="entry-content"> 
-                                <p><img alt="" src="resources/images/mac.jpg"/></p>
-                                <p>contenido</p>
-                            </div> 
-                        </article>						
+                                <div class="form-group">
+                                    url imagen
+                                    <h:inputTextarea rows="1" class="form-control" value="#{postBean.imagen}" />
+                                </div>
+                                <div align="right">  
+                                    <h:commandButton class="btn-action" type="submit" value="eyem it">
+                                        <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost(usuarioBean.email , 'privado')}"/>
+                                    </h:commandButton>
+                                </div>
+                                <br/>
+                            </h:form>
+
+                            <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'privado')}">
+                                <article class="post">
+                                    <header class="entry-header">
+
+                                        <!--Usuario del post-->
+                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                        #{p.creador.nombre}
+                                        <!--Hora-->                                        
+                                        <div class="fecha">
+                                            <h:outputText value="#{p.idPost}" >
+                                                <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
+                                            </h:outputText>
+                                        </div>
+                                    </header>
+
+                                    <!--Imagen del post-->
+                                    <h:panelGroup rendered="#{not empty p.imagen}">
+                                        <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
+                                        <br/><br/>
+                                    </h:panelGroup>
+
+                                    <!--Contenido del post-->
+                                    <p>#{p.contenido}</p> <br/>
+
+                                </article>
+                            </ui:repeat>
+
+                        </h:panelGroup>
                     </div> 
                 </div>
             </div>

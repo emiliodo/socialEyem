@@ -16,14 +16,13 @@
 
                         <h:panelGroup id="cont" layout="block">
 
-                            <ui:repeat var="p" value="#{postPerfilBean.listaPost}">
+                            <ui:repeat var="p" value="#{postBean.listaPostUsuario(postBean.userEmailPerfil,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
 
                                         <!--Usuario del post-->
                                         <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                        <a href="" rel="bookmark">#{p.creador.nombre}</a>
-                                        
+                                            #{p.creador.nombre}
                                         <!--Hora-->                                        
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
@@ -31,13 +30,13 @@
                                             </h:outputText>
                                         </div>
                                     </header>
-                                    
+
                                     <!--Imagen del post-->
                                     <h:panelGroup rendered="#{not empty p.imagen}">
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                         <br/><br/>
                                     </h:panelGroup>
-                                    
+
                                     <!--Contenido del post-->
                                     <p>#{p.contenido}</p> <br/>
 

@@ -39,6 +39,7 @@ public class PostBean implements Serializable {
     private List<String> mostradoPor;
     private Usuario creador;
     private String fechaCreacion;
+    private String userEmailPerfil;
 
     @PostConstruct
     public void init() {
@@ -72,6 +73,17 @@ public class PostBean implements Serializable {
         imagen = null;
         
     }
+
+    public String getUserEmailPerfil() {
+        return userEmailPerfil;
+    }
+    
+    public String verPerfil(String e){
+        this.userEmailPerfil = e;
+        return "verPerfil";
+    }
+    
+    
 
     public String getFechaCreacion() {
         return fechaCreacion;
@@ -139,6 +151,11 @@ public class PostBean implements Serializable {
     
     public List<Post> listaPostPublicos(){
         return postService.buscarTodos();
+    }
+    
+    public List<Post> listaPostUsuario(String email, String tipo){
+        
+        return postService.findPostUser(email, tipo);
     }
 
 }

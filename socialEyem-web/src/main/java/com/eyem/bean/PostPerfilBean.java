@@ -39,7 +39,7 @@ public class PostPerfilBean implements Serializable {
     @PostConstruct
     public void inicializar() {
      listaPost = postService.findAllPostByEmailUser("you");
-     listaPost = postService.buscarTodos();
+//     listaPost = postService.buscarTodos();
         System.out.println("");
     }
     

@@ -17,7 +17,7 @@
                         <h:panelGroup id="cont" layout="block">
 
                             <h:form id="form_crear">
-                                
+
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
@@ -32,17 +32,20 @@
                                     </h:commandButton>
                                 </div>
 
-                                
+
                                 <br/>
                             </h:form>
 
                             <ui:repeat var="p" value="#{postBean.listaPostPublicos()}">
                                 <article class="post">
                                     <header class="entry-header">
-                                        
+
                                         <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                        <a href="" rel="bookmark">#{p.creador.nombre}</a>
+                                        
+                                        <h:form>
+                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}" />
+                                            <h:commandLink action="#{postBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
+                                        </h:form>
                                         <!--Hora-->                                        
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >

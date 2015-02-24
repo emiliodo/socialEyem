@@ -38,11 +38,12 @@ public class PostService {
     }
 
     public List<Post> findPublicPost() {
-        return postRepository.findPublicPost();
-
+        List<Post>lista = postRepository.findPublicPost();
+        return lista;
+        //return postRepository.findAll();
     }
 
-    public List<Post> findPostReplicados() {
-        return postRepository.findPublicPost();
+    public List<Post> findPostReplicados(String email) {
+        return postRepository.findPostReplicados(email);
     }
 }

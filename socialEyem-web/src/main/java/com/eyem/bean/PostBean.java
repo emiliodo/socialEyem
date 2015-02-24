@@ -36,7 +36,6 @@ public class PostBean implements Serializable {
     private String contenido;
     private String imagen;
     private String video;
-    private List<String> mostradoPor;
     private Usuario creador;
     private String fechaCreacion;
     private String userEmailPerfil;
@@ -75,16 +74,22 @@ public class PostBean implements Serializable {
     }
 
     public List<Post> listaPostPublicos() {
-        return postService.findPublicPost();
+        List<Post> lista = postService.findPublicPost();
+        if (lista == null || lista.isEmpty())
+            return null;
+        else
+            return lista;
     }
 
     public List<Post> listaPostUsuario(String email, String tipo) {
         return postService.findPostUser(email, tipo);
     }
     
-    public List<Post> listaPostReplicados(){
-        return postService.findPostReplicados();
+    public List<Post> listaPostReplicados(String email){
+        return postService.findPostReplicados(email);
     }
+    
+    public 
 
     public String getUserEmailPerfil() {
         return userEmailPerfil;
@@ -141,14 +146,6 @@ public class PostBean implements Serializable {
 
     public void setVideo(String video) {
         this.video = video;
-    }
-
-    public List<String> getMostradoPor() {
-        return mostradoPor;
-    }
-
-    public void setMostradoPor(List<String> mostradoPor) {
-        this.mostradoPor = mostradoPor;
     }
 
     public Usuario getCreador() {

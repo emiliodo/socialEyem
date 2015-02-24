@@ -21,7 +21,11 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
     
     public List<Usuario> buscarTodos(){
-        return usuarioRepository.findAll();
+        List<Usuario> listaUsuarios = usuarioRepository.findAll();
+        if(listaUsuarios.isEmpty()){
+            return null;
+        }
+        return listaUsuarios;
     }
     
     public Usuario buscarPorEmail(String email){

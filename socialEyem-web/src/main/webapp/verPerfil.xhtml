@@ -19,13 +19,13 @@
                             <ui:repeat var="p" value="#{postBean.listaPost}">
                                 <article class="post">
                                     <header class="entry-header">
-                                        
+
                                         <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{postBean.creador.imagen}" alt=""/>
-                                        <a href="" rel="bookmark">#{postBean.creador.nombre}</a>
+                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                        <a href="" rel="bookmark">#{p.creador.nombre}</a>
                                         
                                         <!--Hora-->                                        
-                                        <div class="entry-meta">
+                                        <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>

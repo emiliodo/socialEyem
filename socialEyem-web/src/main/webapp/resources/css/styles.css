@@ -138,17 +138,15 @@ a:hover {
 }
 #head .title {
     font-family: Alice, Georgia, serif;
-    font-size: 49px;
-    font-size: 3.0625rem;
+    font-size: 45px;
 }
 #head .title a {
     text-decoration: none;
     color: #333333;
 }
-#head .tagline {
+.taglineEMAIL {
     display: block;
-    font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 16px;
     line-height: 1.2em;
     color: #7C7C7C;
     margin: 5px 0 0;
@@ -230,6 +228,7 @@ a:hover {
 }
 .navbar-default .navbar-nav > li > a {
     color: #454545;
+    font-size: 17px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -698,8 +697,7 @@ footer.entry-meta .meta-in {
 .fecha {
     text-align: right;
     font-family: Georgia, serif;
-    font-size: 21px;
-    font-size: 1.125rem;
+    font-size: 15px;
     font-style: italic;
     font-weight: normal;
     color: #a5a5a5;

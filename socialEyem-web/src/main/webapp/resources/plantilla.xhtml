@@ -23,14 +23,14 @@
     <h:body>
 
         <ui:fragment rendered="#{not empty usuarioBean and
-                      not empty usuarioBean.email}">
-            #{usuarioBean.registrateOIniciaSesion(usuarioBean.email, usuarioBean.nombre, usuarioBean.imagen)}
-              REGISTRATE COLEGA
+                                 not empty usuarioBean.email}">
+                     #{usuarioBean.registrateOIniciaSesion(usuarioBean.email, usuarioBean.nombre, usuarioBean.imagen)}
+                     REGISTRATE COLEGA
         </ui:fragment>
         <ui:fragment rendered="#{empty usuarioBean or
-                      empty usuarioBean.email}">
-            #{usuarioBean.veteAIndex()}
-              VETE A INDEX
+                                 empty usuarioBean.email}">
+                     #{usuarioBean.veteAIndex()}
+                     VETE A INDEX
         </ui:fragment>
 
 
@@ -42,7 +42,7 @@
                     <!--Imagen del usuario logeado-->
                     <img class="img-circle" src="#{usuarioBean.imagen}" alt="Mi imagen de perfil"/>
                     <span class="title">#{usuarioBean.nombre}</span>
-                    <span class="tagline">#{usuarioBean.email}</span>
+                    <span class="taglineEMAIL">#{usuarioBean.email}</span>
                 </h1>
             </div>
 
@@ -63,7 +63,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="timeline.xhtml">Timeline</a></li>
-                            <li><a href="mieyem.xhtml">miEYEM</a></li>
+                            <li><a href="mieyem.xhtml">mi EYEM</a></li>
                             <li><a href="misgrupos.xhtml">mis grupos</a></li>
                         </ul>
                     </div>			

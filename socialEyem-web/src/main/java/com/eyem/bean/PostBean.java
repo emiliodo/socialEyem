@@ -97,8 +97,6 @@ public class PostBean implements Serializable {
     public List<Post> listaPostReplicados(String email){
         return postService.findPostReplicados(email);
     }
-    
-    public 
 
     public String getUserEmailPerfil() {
         return userEmailPerfil;

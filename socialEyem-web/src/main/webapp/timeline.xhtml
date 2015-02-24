@@ -17,6 +17,7 @@
                         <h:panelGroup id="cont" layout="block">
 
                             <h:form id="form_crear">
+                                
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
@@ -27,29 +28,34 @@
                                 </div>
                                 <div align="right">  
                                     <h:commandButton class="btn-action" type="submit" value="eyem it">
-                                        <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost}"/>
+                                        <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost(usuarioBean.email , 'publico')}"/>
                                     </h:commandButton>
-                                </div><br/>          
+                                </div>
+
+                                
+                                <br/>
                             </h:form>
 
                             <ui:repeat var="p" value="#{postBean.listaPost}">
                                 <article class="post">
                                     <header class="entry-header">
-                                        <img class="img-circle-small" src="#{usuarioBean.imagen}" alt=""/>
-                                        <a href="" rel="bookmark">#{usuarioBean.nombre}</a>
-
+                                        
+                                        <!--Usuario del post-->
+                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                        <a href="" rel="bookmark">#{p.creador.nombre}</a>
+                                        <!--Hora-->                                        
                                         <div class="entry-meta">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
                                         </div>
                                     </header>
-
+                                    <!--Imagen del post-->
                                     <h:panelGroup rendered="#{not empty p.imagen}">
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                         <br/><br/>
                                     </h:panelGroup>
-
+                                    <!--Contenido del post-->
                                     <p>#{p.contenido}</p> <br/>
 
                                 </article>

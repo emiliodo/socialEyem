@@ -80,7 +80,7 @@ public class UsuarioBean implements Serializable {
         this.email= request.getParameter("poiemail");
         this.nombre =  request.getParameter("poinombre");
         this.imagen =  request.getParameter("poiimagen");
-        this.imagen = this.imagen.substring(0, this.imagen.length() - 5);
+        this.imagen = this.imagen.substring(0, this.imagen.length() - 6);
         return "timeline";
     }
     

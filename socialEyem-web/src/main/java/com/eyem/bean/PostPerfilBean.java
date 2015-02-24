@@ -38,28 +38,11 @@ public class PostPerfilBean implements Serializable {
 
     @PostConstruct
     public void inicializar() {
-        listaPost = postService.findAllPostByEmailUser(imagen);
+     listaPost = postService.findAllPostByEmailUser("you");
+     listaPost = postService.buscarTodos();
         System.out.println("");
     }
-    public String cargarPostUsuario(){
     
-    return"";
-    }
-
-    public void crearPost() {
-        Post p = new Post();
-        p.setContenido(contenido);
-        p.setImagen(imagen);
-        p.setIdPost(System.currentTimeMillis());
-        p.setTipo(tipo);
-     
-        
-        postService.crearPost(p);
-        listaPost = postService.buscarTodos();
-        contenido = null;
-        imagen = null;
-    }
-
     public String getFechaCreacion() {
         return fechaCreacion;
     }

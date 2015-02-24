@@ -19,22 +19,26 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
-    
-    public List<Post> buscarTodos(){
+
+    public List<Post> buscarTodos() {
         return postRepository.findAll();
     }
-    
-    public boolean crearPost(Post p){
+
+    public boolean crearPost(Post p) {
         postRepository.insert(p);
         return true;
     }
 
-    public List<Post> findAllPostByEmailUser(String emailUser){
-
+    public List<Post> findAllPostByEmailUser(String emailUser) {
         return postRepository.findAllPostByEmailUser(emailUser);
     }
-    public List<Post> findPostUser(String emailUser,String tipo){
-    
-    return postRepository.findPostUser(emailUser, tipo);
+
+    public List<Post> findPostUser(String emailUser, String tipo) {
+        return postRepository.findPostUser(emailUser, tipo);
+    }
+
+    public List<Post> findPublicPost() {
+        return postRepository.findPublicPost();
+
     }
 }

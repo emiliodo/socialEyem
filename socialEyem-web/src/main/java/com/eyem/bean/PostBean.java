@@ -27,7 +27,7 @@ public class PostBean implements Serializable {
 
     @Autowired
     PostService postService;
-    
+
     @Autowired
     UsuarioService usuarioService;
 
@@ -43,19 +43,19 @@ public class PostBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        
+
     }
 
     public void crearPost(String email, String tipo) {
-        
+
         Post p = new Post();
         Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
         try {
             java.net.URL url = new java.net.URL(imagen);
-            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null,url.toString() + " subido por " + u.getEmail());
+            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, url.toString() + " subido por " + u.getEmail());
         } catch (MalformedURLException ex) {
-            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex+" causado por " + u.getEmail());
+            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex + " causado por " + u.getEmail());
             imagen = null;
         }
 //        if(Patterns.WEB_URL.matcher(video).matches()){
@@ -67,23 +67,31 @@ public class PostBean implements Serializable {
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);
         p.setCreador(u);
-        
+
         postService.crearPost(p);
         contenido = null;
         imagen = null;
-        
+
     }
+
+    public List<Post> listaPostPublicos() {
+        return postService.findPublicPost();
+    }
+
+    public List<Post> listaPostUsuario(String email, String tipo) {
+        return postService.findPostUser(email, tipo);
+    }
+    
+    
 
     public String getUserEmailPerfil() {
         return userEmailPerfil;
     }
-    
-    public String verPerfil(String e){
+
+    public String verPerfil(String e) {
         this.userEmailPerfil = e;
         return "verPerfil";
     }
-    
-    
 
     public String getFechaCreacion() {
         return fechaCreacion;
@@ -147,15 +155,6 @@ public class PostBean implements Serializable {
 
     public void setCreador(Usuario creador) {
         this.creador = creador;
-    }
-    
-    public List<Post> listaPostPublicos(){
-        return postService.buscarTodos();
-    }
-    
-    public List<Post> listaPostUsuario(String email, String tipo){
-        
-        return postService.findPostUser(email, tipo);
     }
 
 }

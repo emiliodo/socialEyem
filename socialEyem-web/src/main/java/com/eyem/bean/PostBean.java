@@ -14,6 +14,8 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,18 +53,25 @@ public class PostBean implements Serializable {
         Post p = new Post();
         Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
-        try {
-            java.net.URL url = new java.net.URL(imagen);
-            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, url.toString() + " subido por " + u.getEmail());
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex + " causado por " + u.getEmail());
+        String pattern = "https?:\\/\\/(?:[0-9A-Z-]+\\.)?(?:youtu\\.be\\/|youtube\\.com\\S*[^\\w\\-\\s])([\\w\\-]{11})(?=[^\\w\\-]|$)(?![?=&+%\\w]*(?:['\"][^<>]*>|<\\/a>))[?=&+%\\w]*";
+        
+        Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = compiledPattern.matcher(imagen);
+        while (matcher.find()) {
+            System.out.println(matcher.group());
+            video = matcher.group();
             imagen = null;
+            p.setVideo(video);
         }
-//        if(Patterns.WEB_URL.matcher(video).matches()){
-//            p.setVideo(video);
-//        }else{
-//            p.setVideo(null);
-//        }
+        if (null != imagen) {
+            try {
+                java.net.URL url = new java.net.URL(imagen);
+                Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, url.toString() + " subido por " + u.getEmail());
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex + " causado por " + u.getEmail());
+                imagen = null;
+            }
+        }
         p.setImagen(imagen);
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);

@@ -27,7 +27,10 @@ public class GrupoService {
     }
 
      public List<Grupo> findAllGrupoByEmailUser(String emailUser){
-
-        return grupoRepository.findAllGrupoByEmailUser(emailUser);
+         List<Grupo> listaGrupos = grupoRepository.findAllGrupoByEmailUser(emailUser);
+         if(listaGrupos.isEmpty()){
+             return null;
+         }
+         return listaGrupos; 
     }
 }

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="resources/plantilla.xhtml">
+
+    <ui:define name="contenido">
+
+        <main id="main">
+            <div class="container">
+                <div class="row topspace">
+                    <div class="col-sm-8 col-sm-offset-2">
+
+                        <h1>MI EYEM</h1>
+
+                        <!--añadir post-->
+                        <div class="form-group">
+                            <label for="inputComment"></label>
+                            <textarea class="form-control" rows="6"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputWeb">Imagen</label>
+                            <input type="nane" class="form-control" id="inputWeb" placeholder="http://"/>
+                        </div>
+                        <div align="right">
+                            <button type="submit" class="btn btn-action">eyem it!</button>
+                        </div><br/><br/> 
+
+                        <!--reyems-->
+                        <article class="post">
+                            <header class="entry-header">
+                                <!--fecha-->
+                                <div class="entry-meta"> 
+                                    <span class="posted-on"><time class="entry-date published" >June 17, 2013</time></span>			
+                                </div>
+                                <!--Nombre usuario-->
+                                <img class="img-circle-small" src="resources/images/avatar_woman.png" alt=""/>
+                                <!--Enlace a perfil de usuario-->
+                                <a href="single.html" rel="bookmark">Nombre</a>
+                            </header>
+                            <!--contenido-->
+                            <div class="entry-content"> 
+                                <p><img alt="" src="resources/images/mac.jpg"/></p>
+                                <p>contenido</p>
+                            </div> 
+                        </article>						
+                    </div> 
+                </div>
+            </div>
+        </main>
+
+    </ui:define>
+</ui:composition>

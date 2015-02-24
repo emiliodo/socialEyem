@@ -39,7 +39,9 @@ public class GrupoBean implements Serializable{
     @PostConstruct
     public void inicializar(){
         listaGrupo= grupoService.findAllGrupoByEmailUser("maria@bu");
-        System.out.println("----------------------------------------------"+listaGrupo.get(0).getNombreGrupo());
+        if(listaGrupo == null){
+            return;
+        }
         listaUsuarios = usuarioService.buscarTodos();
         //Habría que tener todos los datos del usuario que esta creando el grupo
         //Como aun no tenemos bean de sesion me invento uno

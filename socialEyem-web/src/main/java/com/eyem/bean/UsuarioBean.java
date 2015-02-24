@@ -7,6 +7,7 @@ package com.eyem.bean;
 
 import com.eyem.entity.Usuario;
 import com.eyem.services.UsuarioService;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -30,13 +31,10 @@ public class UsuarioBean implements Serializable {
     UsuarioService usuarioService;
 
     @PostConstruct
-    public void inicializar() {
-
-        listaUsuario = usuarioService.buscarTodos();
-        nombre = listaUsuario.get(0).getNombre();
-
+    public void init(){
+        
     }
-
+    
     public String getEmail() {
         return email;
     }
@@ -82,7 +80,7 @@ public class UsuarioBean implements Serializable {
         this.email= request.getParameter("poiemail");
         this.nombre =  request.getParameter("poinombre");
         this.imagen =  request.getParameter("poiimagen");
-        this.imagen = this.imagen.substring(0, this.imagen.length() - 5);
+        this.imagen = this.imagen.substring(0, this.imagen.length() - 6);
         return "timeline";
     }
     
@@ -98,8 +96,8 @@ public class UsuarioBean implements Serializable {
         }
     }
     
-    public String veteAIndex(){
-        return "index";
+    public void veteAIndex() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
 
 }

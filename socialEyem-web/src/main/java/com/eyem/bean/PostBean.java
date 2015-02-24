@@ -8,6 +8,7 @@ package com.eyem.bean;
 import com.eyem.entity.Post;
 import com.eyem.entity.Usuario;
 import com.eyem.services.PostService;
+import com.eyem.services.UsuarioService;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,6 +26,9 @@ public class PostBean implements Serializable {
 
     @Autowired
     PostService postService;
+    
+    @Autowired
+    UsuarioService usuarioService;
 
     private Long idPost;
     private String tipo;
@@ -41,18 +45,21 @@ public class PostBean implements Serializable {
         listaPost = postService.buscarTodos();
     }
 
-    public void crearPost() {
+    public void crearPost(String email, String tipo) {
+        
         Post p = new Post();
+        Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
         p.setImagen(imagen);
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);
-     
+        p.setCreador(u);
         
         postService.crearPost(p);
         listaPost = postService.buscarTodos();
         contenido = null;
         imagen = null;
+        
     }
 
     public String getFechaCreacion() {

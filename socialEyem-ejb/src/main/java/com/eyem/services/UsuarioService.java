@@ -29,7 +29,7 @@ public class UsuarioService {
     }
     
     public Usuario buscarPorEmail(String email){
-        return usuarioRepository.findOne(email);
+        return (Usuario) usuarioRepository.findUsertByEmail(email);
     }
     
     public Usuario crearUsuario(String email, String nombre, String imagen){

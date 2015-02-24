@@ -52,4 +52,15 @@ public class PostService {
         postRepository.insert(po);
         return true;
     }
+    public void deletePost(Post p){
+    postRepository.delete(p);
+    }
+    public Post findPostById(Long postId){
+    return postRepository.findPostById(postId);
+    
+    }
+    public void deletePostById(Long postId){
+    postRepository.delete(postRepository.findPostById(postId));
+    
+    }
 }

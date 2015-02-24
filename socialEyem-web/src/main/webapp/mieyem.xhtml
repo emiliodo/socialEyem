@@ -46,7 +46,12 @@
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
-                                            
+                                            <h:form>
+                                                <h:commandLink action="#{postDeleteBean.borrarPost(p)}">
+                                                    <h:graphicImage value="resources/images/iconoborrar.png"/>
+                                                </h:commandLink>
+                                            </h:form>
+
                                         </div>
                                     </header>
                                     <!--Imagen del post-->
@@ -61,7 +66,7 @@
                                     <p>#{p.contenido}</p><hr/>
                                 </article>
                             </ui:repeat>
-                            
+
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -74,6 +79,11 @@
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
                                         </div>
+                                        <h:form>
+                                            <h:commandLink action="#{postDeleteBean.borrarPost(p.idPost)}">
+                                                <h:graphicImage value="resources/images/iconoborrar.png"/>
+                                            </h:commandLink>
+                                        </h:form>
                                     </header>
                                     <!--Imagen del post-->
                                     <h:panelGroup rendered="#{not empty p.imagen}">

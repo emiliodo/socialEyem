@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
  * @author Maria
  */
 @Component
-public class PostBean implements Serializable {
+public class PostDeleteBean implements Serializable {
 
     @Autowired
     PostService postService;
@@ -47,9 +47,9 @@ public class PostBean implements Serializable {
 
     }
 
-    public String borrarPost(Post p) {
-        postService.deletePost(p);
-        System.out.println(p.getContenido());
+    public String borrarPost(Long idPost) {
+        postService.deletePostById(idPost);
+        System.out.println();
         return "mieyem";
     }
 

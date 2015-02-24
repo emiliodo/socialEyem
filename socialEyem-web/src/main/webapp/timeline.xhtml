@@ -35,7 +35,6 @@
                             <ui:repeat var="p" value="#{postBean.listaPostPublicos()}">
                                 <article class="post">
                                     <header class="entry-header">
-
                                         <!--Usuario del post-->
                                         <h:form>
                                             <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
@@ -54,11 +53,22 @@
                                         <br/><br/>
                                     </h:panelGroup>
                                     <h:panelGroup rendered="#{not empty p.video}">
-                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
+                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0" allowfullscreen="false"></iframe>
                                         <br/><br/>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    <p>#{p.contenido}</p> <hr/>
+                                    <p>#{p.contenido}</p>
+                                    
+                                    <!--iconos post-->
+                                    <div class="postfooter">
+                                        <h:commandLink action="">
+                                            <h:graphicImage height="25" width="25" library="images" name="reyem.png" alt="reyem" />
+                                        </h:commandLink>
+                                    </div>
+
+                                    <hr/>
+
+
 
                                 </article>
                             </ui:repeat>

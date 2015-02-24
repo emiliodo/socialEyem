@@ -17,13 +17,12 @@
                         <h:panelGroup id="cont" layout="block">
 
                             <h:form id="form_crear">
-
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="6" value="#{postBean.contenido}"/>
                                 </div>
                                 <div class="form-group">
-                                    url imagen
+                                    url multimedia
                                     <h:inputTextarea rows="1" class="form-control" value="#{postBean.imagen}" />
                                 </div>
                                 <div align="right">  
@@ -31,9 +30,6 @@
                                         <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost(usuarioBean.email , 'publico')}"/>
                                     </h:commandButton>
                                 </div>
-
-
-                                <br/>
                             </h:form>
 
                             <ui:repeat var="p" value="#{postBean.listaPostPublicos()}">
@@ -41,9 +37,8 @@
                                     <header class="entry-header">
 
                                         <!--Usuario del post-->
-                                        
                                         <h:form>
-                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}" />
+                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
                                             <h:commandLink action="#{postBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
                                         </h:form>
                                         <!--Hora-->                                        
@@ -58,8 +53,12 @@
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                         <br/><br/>
                                     </h:panelGroup>
+                                    <h:panelGroup rendered="#{not empty p.video}">
+                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
+                                        <br/><br/>
+                                    </h:panelGroup>
                                     <!--Contenido del post-->
-                                    <p>#{p.contenido}</p> <br/>
+                                    <p>#{p.contenido}</p> <hr/>
 
                                 </article>
                             </ui:repeat>

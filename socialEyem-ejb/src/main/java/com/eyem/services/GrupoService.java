@@ -6,6 +6,7 @@
 package com.eyem.services;
 
 import com.eyem.entity.Grupo;
+import com.eyem.entity.Usuario;
 import com.eyem.repository.GrupoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class GrupoService {
          return g;
      }
 
-     public List<Grupo> findAllGrupoByEmailUser(String emailUser){
-         List<Grupo> listaGrupos = grupoRepository.findAllGrupoByEmailUser(emailUser);
+     public List<Grupo> buscarGrupoPorUsuario(String emailUser){
+         List<Grupo> listaGrupos = grupoRepository.buscarGrupoPorUsuario(emailUser);
          if(listaGrupos.isEmpty()){
              return null;
          }

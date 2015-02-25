@@ -24,7 +24,7 @@ public interface PostRepository extends MongoRepository<Post, Long>{
     public List<Post> findPostUser(String email, String tipo);
     @Query("{'tipo':'publico'}")
     public List<Post> findPublicPost();
-    @Query("{'mostradoPor.email':?0}")
+    @Query("{'mostradoPor':?0}")
     public List<Post> findPostReplicados(String email);
     @Query("{'idPost':?0}")
     public List<Post> findPostById(Long id);

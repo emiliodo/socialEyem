@@ -9,6 +9,12 @@
 
     <ui:define name="contenido">
 
+        <head>
+            <script>
+                document.title = "ver perfil";
+            </script>
+        </head>
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
@@ -22,7 +28,7 @@
 
                                         <!--Usuario del post-->
                                         <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                            #{p.creador.nombre}
+                                        #{p.creador.nombre}
                                         <!--Hora-->                                        
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
@@ -39,9 +45,9 @@
 
                                     <!--Contenido del post-->
                                     <p>#{p.contenido}</p> 
-                                    
+
                                     <hr/>
-                                    
+
 
                                 </article>
                             </ui:repeat>

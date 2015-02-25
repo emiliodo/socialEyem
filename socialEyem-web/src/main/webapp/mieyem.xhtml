@@ -9,6 +9,12 @@
 
     <ui:define name="contenido">
 
+        <head>
+            <script>
+                document.title = "mi eyem";
+            </script>
+        </head>
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
@@ -32,8 +38,7 @@
                                 </div>
                                 <br/>
                             </h:form>
-                            
-                            LISTA DE POST PRIVADOS
+
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'privado')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -68,8 +73,7 @@
                                     <hr/>
                                 </article>
                             </ui:repeat>
-                            
-                            LISTA DE POST PUBLICOS DE UN USUARIO
+
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -104,14 +108,14 @@
                                 </article>
                             </ui:repeat>
 
-                            LISTA DE POST REPLICADOS
                             <ui:repeat var="p" value="#{postBean.listaPostReplicados(usuarioBean.email)}">
                                 <article class="post">
                                     <header class="entry-header">
                                         <!--Usuario del post-->
                                         <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
                                         #{p.creador.nombre}
-                                        <!--Hora-->                                        
+                                        <!--Hora-->
+                                        <h:graphicImage height="22" width="22" value="resources/images/reyem.png" alt="post replicado" />
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>

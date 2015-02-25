@@ -128,11 +128,11 @@
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                     </h:panelGroup>
                                     <h:panelGroup rendered="#{not empty p.video}">
-                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
-                                        <br/><br/>
+                                        <br/><iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    #{p.contenido}<hr/>
+                                    #{p.contenido}
+                                    <hr/>
                                 </article>
                             </ui:repeat>
 

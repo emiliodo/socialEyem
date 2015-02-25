@@ -31,5 +31,7 @@ public interface PostRepository extends MongoRepository<Post, Long>{
     
     @Query("{'tipo':'?0'}")
     public List<Post> buscarPostGrupo(Long idGrupo);
+    @Query("{'idPost':?0,'mostradoPor':?1}")
+    public List<String> reyemAnterior(Long idPost,String email);
     
 }

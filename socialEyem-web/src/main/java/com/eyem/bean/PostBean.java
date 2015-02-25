@@ -68,6 +68,11 @@ public class PostBean implements Serializable {
             postService.crearPost(reEyem);
         }
     }
+    public boolean reyemAnterior(Long idPost,String email){
+        boolean prueba =postService.reyemAnterior(idPost, email);
+        System.out.println("");
+        return postService.reyemAnterior(idPost, email); 
+    }
 
     public void crearPost(String email, String tipo) {
 

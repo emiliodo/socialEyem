@@ -59,11 +59,13 @@
                                     #{p.contenido}
                                     <!--iconos post-->
                                     <div class="postfooter">
-                                        <h:form>
-                                            <h:commandLink action="#{postBean.replicarPost(p, usuarioBean.email)}">
-                                                <h:graphicImage height="23" width="23" library="images" name="reyem.png" alt="reyem" />
-                                            </h:commandLink>
-                                        </h:form>
+                                        <h:panelGroup rendered="#{!postBean.reyemAnterior(p.idPost, usuarioBean.email)}">
+                                            <h:form>
+                                                <h:commandLink action="#{postBean.replicarPost(p, usuarioBean.email)}">
+                                                    <h:graphicImage height="23" width="23" library="images" name="reyem.png" alt="reyem" />
+                                                </h:commandLink>
+                                            </h:form>
+                                        </h:panelGroup> 
                                     </div>  
                                     <hr/>
                                 </article>

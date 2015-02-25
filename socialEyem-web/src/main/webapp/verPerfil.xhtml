@@ -15,10 +15,20 @@
             </script>
         </head>
 
+
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
+
+                        <div id="verperfil" class="parallax" parallax-speed="1">
+                            <h1 id="logo" class="text-center">
+                                <!--Imagen del usuario logeado-->
+                                <img class="img-circle2" src="#{usuarioBean.imagen}" alt="Mi imagen de perfil"/>
+                                <span class="title">#{usuarioBean.nombre}</span>
+                            </h1>
+                        </div>
 
                         <h:panelGroup id="cont" layout="block">
 

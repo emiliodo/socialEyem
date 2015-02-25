@@ -40,6 +40,45 @@
                                 </div>
                             </h:form>
                             <hr/>
+                            <ui:repeat var="p" value="#{grupoBean.listaPostGrupo}">
+                                <article class="post">
+                                    <header class="entry-header">
+                                        <!--Usuario del post-->
+                                        <h:form>
+                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
+                                            <h:outputText value="#{p.creador.nombre}"/>
+                                        </h:form>                                    
+                                    </header>
+                                    <!--Imagen del post-->
+                                    <h:panelGroup rendered="#{not empty p.imagen}">
+                                        <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
+                                        <br/><br/>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{not empty p.video}">
+                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0" allowfullscreen="false"></iframe>
+                                        <br/><br/>
+                                    </h:panelGroup>
+                                    <!--fecha post-->
+                                    <div class="fecha">
+                                        <h:outputText value="#{p.idPost}" >
+                                            <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
+                                        </h:outputText>
+                                    </div>
+                                    <!--Contenido del post-->
+                                    #{p.contenido}
+                                    <!--iconos post-->
+                                    <div class="postfooter">
+                                        <h:form>
+                                            <h:commandLink action="#{grupoBean.replicarPost(p, p.creador.email)}">
+                                                <h:graphicImage height="23" width="23" library="images" name="reyem.png" alt="reyem" />
+                                            </h:commandLink>
+                                        </h:form>
+                                    </div>  
+                                    <hr/>
+                                </article>
+                            </ui:repeat>
+                            
+                            
                         </h:panelGroup>
                     </div> 
                 </div>

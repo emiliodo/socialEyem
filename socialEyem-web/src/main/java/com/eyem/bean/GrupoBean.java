@@ -54,11 +54,13 @@ public class GrupoBean implements Serializable{
     private List<Usuario> usuariosSeleccionados;
     private Grupo grupoSeleccionado;
     private List<Post> listaPostGrupo;
+    private List<String> emailUsuariosSeleccionados;
     
     //Posts
     private String contenido;
     private String imagen;
     private String video;
+    private String userEmailPerfil;
 
     @PostConstruct
     public void inicializar(){
@@ -66,7 +68,7 @@ public class GrupoBean implements Serializable{
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         String idParam = externalContext.getRequestParameterMap().get("id");
         
-         ExternalContext externalContext2 = FacesContext.getCurrentInstance().getExternalContext();
+        ExternalContext externalContext2 = FacesContext.getCurrentInstance().getExternalContext();
         String idCrear = externalContext2.getRequestParameterMap().get("creandoPost");
         //Si hace el postConstruct desde mostrar grupos O DESDE CREAR POST DE GRUPO
         if(idParam == null || idParam.equals("")){
@@ -77,8 +79,8 @@ public class GrupoBean implements Serializable{
                 grupoSeleccionado = new Grupo();
                 grupoSeleccionado = grupoService.buscarGrupoPorId(idGrupo);
                 System.out.println("EL NOMBRE DEL GRUPO ES "+grupoSeleccionado.getNombreGrupo());
-//                listaUsuarios = grupoSeleccionado.getListaUsuarios();
-//                listaPostGrupo = postService.buscarPostGrupo(idGrupo);
+                listaUsuarios = grupoSeleccionado.getListaUsuarios();
+                listaPostGrupo = postService.buscarPostGrupo(idGrupo);
             }
             else{
                 System.out.println("ENTRA A MOSTRAR TODOS LOS GRUPSO ID NULL");
@@ -100,11 +102,27 @@ public class GrupoBean implements Serializable{
             System.out.println("EL NOMBRE DEL GRUPO ES "+grupoSeleccionado.getNombreGrupo());
             listaUsuarios = grupoSeleccionado.getListaUsuarios();
             listaPostGrupo = postService.buscarPostGrupo(idGrupo);
-            
         }
     }
     
+    private List<Usuario> emailsToUsuarios (List<String>listEmails) {
+        List<Usuario> lista = new ArrayList<>();
+        if (listEmails != null) {
+            for (String email:listEmails) {
+                for (Usuario user:this.listaUsuarios) {
+                    if (user.getEmail().equals(email)) {
+                        lista.add(user);
+                        break;
+                    }
+                }
+            }
+        }
+        return lista;
+    }
+    
     public String crearGrupo(){
+        
+        this.usuariosSeleccionados = emailsToUsuarios (this.emailUsuariosSeleccionados);
         Grupo grupo = new Grupo();
         grupo.setCreador(creador);
         grupo.setIdGrupo(System.currentTimeMillis());
@@ -143,16 +161,44 @@ public class GrupoBean implements Serializable{
         }
         p.setImagen(imagen);
         p.setIdPost(System.currentTimeMillis());
-        System.out.println("-----------------------------------------------------------------------IDGERUPO"+idGrupo.toString());
         p.setTipo(idGrupo.toString());
         p.setCreador(u);
 
         postService.crearPost(p);
         contenido = null;
         imagen = null;
+        listaPostGrupo = postService.buscarPostGrupo(idGrupo);
 
     }
     
+    public void replicarPost(Post p, String email) {
+
+        Post reEyem;
+        // buscar post por ID
+        reEyem = postService.findPostById(p.getIdPost());
+        
+        if (reEyem != null) {
+            
+            System.out.println("------------------------BUSCANDO POST POR ID "+p.getIdPost());
+            System.out.println("CONTENIDO:::::::\n"+reEyem.getContenido());
+            
+      
+//            // añadir email a la lista del campo post.compartidoPor
+            reEyem.getMostradoPor().add(email);
+            
+//            // borrar el post segun el ID
+            //postService.deletePostById(p.getIdPost());
+//            // añadir el post temporal anteriormente creado
+            //System.out.println("-----------------------CREANDO POST NUEVOoooooooooooooo");
+            postService.crearPost(reEyem);
+        }
+    }
+    
+     public String verPerfil(String e) {
+        this.userEmailPerfil = e;
+        return "verPerfil";
+    }
+     
     public Long getIdGrupo() {
         return idGrupo;
     }
@@ -239,6 +285,22 @@ public class GrupoBean implements Serializable{
 
     public void setVideo(String video) {
         this.video = video;
+    }
+
+    public String getUserEmailPerfil() {
+        return userEmailPerfil;
+    }
+
+    public void setUserEmailPerfil(String userEmailPerfil) {
+        this.userEmailPerfil = userEmailPerfil;
+    }
+
+    public List<String> getEmailUsuariosSeleccionados() {
+        return emailUsuariosSeleccionados;
+    }
+
+    public void setEmailUsuariosSeleccionados(List<String> emailUsuariosSeleccionados) {
+        this.emailUsuariosSeleccionados = emailUsuariosSeleccionados;
     }
     
     

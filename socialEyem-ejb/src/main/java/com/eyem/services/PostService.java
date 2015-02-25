@@ -42,7 +42,7 @@ public class PostService {
     }
 
     public List<Post> buscarPostGrupo(Long idGrupo) {
-        List<Post> res = postRepository.buscarPostGrupo(idGrupo);
+        List<Post> res = postRepository.buscarPostGrupo(idGrupo.toString());
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {

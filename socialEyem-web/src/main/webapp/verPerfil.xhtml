@@ -16,28 +16,27 @@
 
                         <h:panelGroup id="cont" layout="block">
 
-                            <ui:repeat var="p" value="#{postBean.listaPost}">
+                            <ui:repeat var="p" value="#{postBean.listaPostUsuario(postBean.userEmailPerfil,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
-                                        
+
                                         <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{postBean.creador.imagen}" alt=""/>
-                                        <a href="" rel="bookmark">#{postBean.creador.nombre}</a>
-                                        
+                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                            #{p.creador.nombre}
                                         <!--Hora-->                                        
-                                        <div class="entry-meta">
+                                        <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
                                         </div>
                                     </header>
-                                    
+
                                     <!--Imagen del post-->
                                     <h:panelGroup rendered="#{not empty p.imagen}">
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                         <br/><br/>
                                     </h:panelGroup>
-                                    
+
                                     <!--Contenido del post-->
                                     <p>#{p.contenido}</p> <br/>
 

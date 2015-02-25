@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
  * @author Maria
  */
 @Component
-public class PostBean implements Serializable {
+public class PostDeleteBean implements Serializable {
 
     @Autowired
     PostService postService;
@@ -47,26 +47,12 @@ public class PostBean implements Serializable {
 
     }
 
-    public void borrarPost(Post p) {
-        postService.deletePost(p);
-        System.out.println(p.getContenido());
+    public String borrarPost(Long idPost) {
+        postService.deletePostById(idPost);
+        System.out.println();
+        return "mieyem";
     }
 
-    public void replicarPost(Post p, String email) {
-        
-        Post reEyem = p;
-        // buscar post por ID
-        reEyem = postService.findPostById(p.getIdPost());
-        if (reEyem != null) {
-            // añadir email a la lista del campo post.compartidoPor
-            reEyem.getMostradoPor().add(email);
-            // borrar el post segun el ID
-            postService.deletePostById(p.getIdPost());
-            // añadir el post temporal anteriormente creado
-            postService.crearPost(reEyem);
-        }
-    }
-    
     public void crearPost(String email, String tipo) {
 
         Post p = new Post();
@@ -119,6 +105,11 @@ public class PostBean implements Serializable {
         return postService.findPostReplicados(email);
     }
 
+//    public List<Post> replicarPost(Post p) {
+//
+//        Post np = new Post();
+//
+//    }
     public String getUserEmailPerfil() {
         return userEmailPerfil;
     }

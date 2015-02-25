@@ -37,6 +37,15 @@ public class PostService {
             return res;
         }
     }
+    
+    public List<Post> buscarPostGrupo(Long idGrupo) {
+        List<Post> res = postRepository.buscarPostGrupo(idGrupo);
+        if (res.isEmpty() || res.size() <= 0) {
+            return null;
+        } else {
+            return res;
+        }
+    }
 
     public boolean replicarPost(Post po) {
         postRepository.delete(po);

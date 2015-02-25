@@ -135,6 +135,10 @@ public class PostBean implements Serializable {
         return userEmailPerfil;
     }
 
+    public void setUserEmailPerfil(String userEmailPerfil) {
+        this.userEmailPerfil = userEmailPerfil;
+    }
+
     public String verPerfil(String e) {
         this.userEmailPerfil = e;
         return "verPerfil";
@@ -194,6 +198,10 @@ public class PostBean implements Serializable {
 
     public void setCreador(Usuario creador) {
         this.creador = creador;
+    }
+    
+    public String buscarUsuario(){
+        return "verPerfil";
     }
 
 }

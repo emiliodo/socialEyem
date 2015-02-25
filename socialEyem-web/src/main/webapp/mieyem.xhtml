@@ -112,10 +112,11 @@
                                 <article class="post">
                                     <header class="entry-header">
                                         <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                        #{p.creador.nombre}
+                                        <h:form>
+                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
+                                            <h:commandLink action="#{postBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
+                                        </h:form> 
                                         <!--Hora-->
-                                        <h:graphicImage height="22" width="22" value="resources/images/reyem.png" alt="post replicado" />
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>

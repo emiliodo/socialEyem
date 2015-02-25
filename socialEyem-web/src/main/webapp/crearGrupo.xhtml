@@ -17,17 +17,10 @@
                         <h1>MIS GRUPOS</h1>
                         <div align="right">
                             <h:form>
-                                <h:outputLabel value="Nombre del grupo"/>
-                                <h:inputText value="#{grupoBean.nombreGrupo}"/>
-                                <p:dataTable var="usuario" value="#{grupoBean.listaUsuarios}" selection="#{grupoBean.usuariosSeleccionados}" rowKey="#{usuario.email}" style="margin-bottom:0">
-                                    <f:facet name="header">
-                                        Usuarios
-                                    </f:facet>
-                                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
-                                    <p:column headerText="Nombre">
-                                        <h:outputText value="#{usuario.email}"/>
-                                    </p:column>
-                                </p:dataTable>
+                            <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear">
+                                            <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
+                                        </h:selectManyCheckbox>
+
                                 <h:commandButton action="#{grupoBean.crearGrupo}" class="btn-action" value="Crear"></h:commandButton>
                             </h:form>
                         </div><br/><br/> 

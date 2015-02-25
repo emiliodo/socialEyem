@@ -54,6 +54,7 @@ public class GrupoBean implements Serializable{
     private List<Usuario> usuariosSeleccionados;
     private Grupo grupoSeleccionado;
     private List<Post> listaPostGrupo;
+    private List<String> emailUsuariosSeleccionados;
     
     //Posts
     private String contenido;
@@ -104,7 +105,24 @@ public class GrupoBean implements Serializable{
         }
     }
     
+    private List<Usuario> emailsToUsuarios (List<String>listEmails) {
+        List<Usuario> lista = new ArrayList<>();
+        if (listEmails != null) {
+            for (String email:listEmails) {
+                for (Usuario user:this.listaUsuarios) {
+                    if (user.getEmail().equals(email)) {
+                        lista.add(user);
+                        break;
+                    }
+                }
+            }
+        }
+        return lista;
+    }
+    
     public String crearGrupo(){
+        
+        this.usuariosSeleccionados = emailsToUsuarios (this.emailUsuariosSeleccionados);
         Grupo grupo = new Grupo();
         grupo.setCreador(creador);
         grupo.setIdGrupo(System.currentTimeMillis());
@@ -275,6 +293,14 @@ public class GrupoBean implements Serializable{
 
     public void setUserEmailPerfil(String userEmailPerfil) {
         this.userEmailPerfil = userEmailPerfil;
+    }
+
+    public List<String> getEmailUsuariosSeleccionados() {
+        return emailUsuariosSeleccionados;
+    }
+
+    public void setEmailUsuariosSeleccionados(List<String> emailUsuariosSeleccionados) {
+        this.emailUsuariosSeleccionados = emailUsuariosSeleccionados;
     }
     
     

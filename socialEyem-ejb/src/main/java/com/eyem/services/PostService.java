@@ -49,7 +49,12 @@ public class PostService {
     }
 
     public Post findPostById(Long postID) {
-        return postRepository.findPostById(postID);
+        List<Post> res = postRepository.findPostById(postID);
+        if (res.isEmpty()){
+            return null;
+        }else{
+            return res.get(0);
+        }
     }
 
     public List<Post> findAllPostByEmailUser(String emailUser) {
@@ -75,6 +80,6 @@ public class PostService {
     }
 
     public void deletePostById(Long postID) {
-        postRepository.delete(postRepository.findPostById(postID));
+        postRepository.delete(this.findPostById(postID));
     }
 }

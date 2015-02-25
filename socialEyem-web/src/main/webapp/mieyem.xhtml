@@ -105,7 +105,7 @@
                             </ui:repeat>
 
                             LISTA DE POST REPLICADOS
-                            <ui:repeat var="p" value="#{postBean.listaPostReplicados(p.creador.email)}">
+                            <ui:repeat var="p" value="#{postBean.listaPostReplicados(usuarioBean.email)}">
                                 <article class="post">
                                     <header class="entry-header">
                                         <!--Usuario del post-->

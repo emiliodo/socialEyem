@@ -14,12 +14,15 @@
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
-                        <h1>MIS GRUPOS</h1>
-                        <div align="right">
+                        <h1 align="center">MIS GRUPOS</h1><br/>
+                        <div align="left">
                             <h:form>
-                            <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear">
-                                            <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
-                                        </h:selectManyCheckbox>
+                                <h:outputLabel value="Nombre Grupo:   "> </h:outputLabel>
+                                <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
+                                Lista de usuarios: <br/>
+                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear" layout="vertical">
+                                    <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
+                                </h:selectManyCheckbox>
 
                                 <h:commandButton action="#{grupoBean.crearGrupo}" class="btn-action" value="Crear"></h:commandButton>
                             </h:form>

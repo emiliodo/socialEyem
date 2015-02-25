@@ -201,7 +201,15 @@ public class PostBean implements Serializable {
     }
     
     public String buscarUsuario(){
-        return "verPerfil";
+        return "verPerfil?faces-redirect=true";
+    }
+    
+    public String dameImagenDe(String e){
+        return usuarioService.buscarPorEmail(e).getImagen();
+    }
+    
+        public String dameNombreDe(String e){
+        return usuarioService.buscarPorEmail(e).getNombre();
     }
 
 }

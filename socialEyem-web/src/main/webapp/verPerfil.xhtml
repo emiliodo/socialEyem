@@ -14,21 +14,33 @@
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
+                        <div id="verperfil" class="parallax" parallax-speed="1">
+                            <h1 id="logo" class="text-center">
+                                <!--Imagen del usuario logeado-->
+                                <h:graphicImage class="img-circle" value="#{postBean.dameImagenDe(postBean.userEmailPerfil)}" alt="Mi imagen de perfil"/>
+                            </h1>
+                            <center>
+                                <h3>#{postBean.dameNombreDe(postBean.userEmailPerfil)}</h3>
+                            </center>
+                        </div>
+
                         <h:panelGroup id="cont" layout="block">
 
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(postBean.userEmailPerfil,'publico')}">
+
                                 <article class="post">
                                     <header class="entry-header">
 
                                         <!--Usuario del post-->
                                         <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                            #{p.creador.nombre}
+                                        #{p.creador.nombre}
                                         <!--Hora-->                                        
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
                                             </h:outputText>
                                         </div>
+
                                     </header>
 
                                     <!--Imagen del post-->

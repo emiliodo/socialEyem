@@ -577,6 +577,12 @@ img {
 
 
 **********************************************************************/
+
+#titulopagina{
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
 .section-title,
 .entry-title {
     display: block;

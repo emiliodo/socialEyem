@@ -32,10 +32,6 @@
                 if (resp.emails[i].type === 'account')
                     primaryEmail = resp.emails[i].value;
             }
-            document.getElementById('responseContainer').value = 'Primary email: ' +
-                    primaryEmail + '\n\Imagen: ' + userimage +
-                    "\nNombre: " + username + "\n\n" +
-                    JSON.stringify(resp);
             
             document.getElementById('poiemail').value = primaryEmail;
             document.getElementById('poinombre').value = username;

@@ -9,6 +9,12 @@
 
     <ui:define name="contenido">
 
+        <head>
+            <script>
+                document.title = "mi eyem";
+            </script>
+        </head>
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
@@ -32,8 +38,7 @@
                                 </div>
                                 <br/>
                             </h:form>
-                            
-                            LISTA DE POST PRIVADOS
+
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'privado')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -68,8 +73,7 @@
                                     <hr/>
                                 </article>
                             </ui:repeat>
-                            
-                            LISTA DE POST PUBLICOS DE UN USUARIO
+
                             <ui:repeat var="p" value="#{postBean.listaPostUsuario(usuarioBean.email,'publico')}">
                                 <article class="post">
                                     <header class="entry-header">
@@ -104,14 +108,15 @@
                                 </article>
                             </ui:repeat>
 
-                            LISTA DE POST REPLICADOS
                             <ui:repeat var="p" value="#{postBean.listaPostReplicados(usuarioBean.email)}">
                                 <article class="post">
                                     <header class="entry-header">
                                         <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                        #{p.creador.nombre}
-                                        <!--Hora-->                                        
+                                        <h:form>
+                                            <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
+                                            <h:commandLink action="#{postBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
+                                        </h:form> 
+                                        <!--Hora-->
                                         <div class="fecha">
                                             <h:outputText value="#{p.idPost}" >
                                                 <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
@@ -123,11 +128,11 @@
                                         <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
                                     </h:panelGroup>
                                     <h:panelGroup rendered="#{not empty p.video}">
-                                        <iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
-                                        <br/><br/>
+                                        <br/><iframe width="640" height="300" src="#{p.video}" frameborder="0"></iframe>
                                     </h:panelGroup>
                                     <!--Contenido del post-->
-                                    #{p.contenido}<hr/>
+                                    #{p.contenido}
+                                    <hr/>
                                 </article>
                             </ui:repeat>
 

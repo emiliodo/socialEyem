@@ -57,22 +57,22 @@ public class PostBean implements Serializable {
         Post reEyem;
         // buscar post por ID
         reEyem = postService.findPostById(p.getIdPost());
-        
         if (reEyem != null) {
-            
-            System.out.println("------------------------BUSCANDO POST POR ID "+p.getIdPost());
-            System.out.println("CONTENIDO:::::::\n"+reEyem.getContenido());
-            
-      
-//            // añadir email a la lista del campo post.compartidoPor
+            // añadir email a la lista del campo post.compartidoPor
             reEyem.getMostradoPor().add(email);
-            
-//            // borrar el post segun el ID
-            //postService.deletePostById(p.getIdPost());
-//            // añadir el post temporal anteriormente creado
-            //System.out.println("-----------------------CREANDO POST NUEVOoooooooooooooo");
+
+            // borrar el post segun el ID
+            postService.deletePost(p);
+            // añadir el post temporal anteriormente creado
+
             postService.crearPost(reEyem);
         }
+    }
+
+    public boolean reyemAnterior(Long idPost, String email) {
+        boolean prueba = postService.reyemAnterior(idPost, email);
+        System.out.println("");
+        return postService.reyemAnterior(idPost, email);
     }
 
     public void crearPost(String email, String tipo) {
@@ -82,14 +82,16 @@ public class PostBean implements Serializable {
         p.setContenido(contenido);
         String pattern = "https?:\\/\\/(?:[0-9A-Z-]+\\.)?(?:youtu\\.be\\/|youtube\\.com\\S*[^\\w\\-\\s])([\\w\\-]{11})(?=[^\\w\\-]|$)(?![?=&+%\\w]*(?:['\"][^<>]*>|<\\/a>))[?=&+%\\w]*";
         List<String> mostraporvacio = new ArrayList<>();
-        
+
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = compiledPattern.matcher(imagen);
         while (matcher.find()) {
             System.out.println(matcher.group());
             video = matcher.group();
             imagen = null;
-            p.setVideo(video);
+            if (video.contains("/embed/")) {
+                p.setVideo(video);
+            }
         }
         if (null != imagen) {
             try {

@@ -24,12 +24,14 @@ public interface PostRepository extends MongoRepository<Post, Long>{
     public List<Post> findPostUser(String email, String tipo);
     @Query("{'tipo':'publico'}")
     public List<Post> findPublicPost();
-    @Query("{'mostradoPor.email':?0}")
+    @Query("{'mostradoPor':?0}")
     public List<Post> findPostReplicados(String email);
     @Query("{'idPost':?0}")
     public List<Post> findPostById(Long id);
     
-    @Query("{'tipo':?0}")
-    public List<Post> buscarPostGrupo(String idGrupo);
+    @Query("{'tipo':'?0'}")
+    public List<Post> buscarPostGrupo(Long idGrupo);
+    @Query("{'idPost':?0,'mostradoPor':?1}")
+    public List<String> reyemAnterior(Long idPost,String email);
     
 }

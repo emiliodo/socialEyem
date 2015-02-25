@@ -11,6 +11,15 @@ body {
 .topspace {
     margin-top: 40px;
 }
+
+.tablagrupos{
+
+    padding: 4px 22px;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center
+}
 /*********************************************************************
  
 
@@ -120,6 +129,25 @@ a:hover {
     background-size: cover;
     color: #7C7C7C;
     padding: 30px 0 35px 0;
+}
+#verperfil{
+    background-size: cover;
+    color: #7C7C7C;
+    padding: 0px 0 10px 0;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+#verperfil img.img-circle2 {
+    display: block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 9px solid rgba(0, 0, 0, 0.17);
+    margin: 0 auto;
+}
+#verperfil h1{
+    margin-top: -34px;
+    margin-bottom: 10px;
 }
 #head img.img-circle {
     display: block;
@@ -348,7 +376,7 @@ img {
     background-color: #e61f65;
 }
 .btn-action {
-    
+
     font-weight: bold;
     background: transparent!important;
     border: 1px solid #333;

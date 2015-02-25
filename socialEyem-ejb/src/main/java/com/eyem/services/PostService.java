@@ -37,7 +37,7 @@ public class PostService {
             return res;
         }
     }
-    
+
     public List<Post> buscarPostGrupo(Long idGrupo) {
         List<Post> res = postRepository.buscarPostGrupo(idGrupo.toString());
         if (res.isEmpty() || res.size() <= 0) {
@@ -58,12 +58,7 @@ public class PostService {
     }
 
     public Post findPostById(Long postID) {
-        List<Post> res = postRepository.findPostById(postID);
-        if (res.isEmpty()){
-            return null;
-        }else{
-            return res.get(0);
-        }
+        return postRepository.findOne(postID);
     }
 
     public List<Post> findAllPostByEmailUser(String emailUser) {
@@ -86,5 +81,10 @@ public class PostService {
 
     public List<Post> findPostReplicados(String email) {
         return postRepository.findPostReplicados(email);
+    }
+
+    public boolean reyemAnterior(Long idPost, String email) {
+        List<String> reyem = postRepository.reyemAnterior(idPost, email);
+        return !(reyem == null || reyem.isEmpty());
     }
 }

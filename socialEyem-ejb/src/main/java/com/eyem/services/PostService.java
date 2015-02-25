@@ -87,8 +87,4 @@ public class PostService {
     public List<Post> findPostReplicados(String email) {
         return postRepository.findPostReplicados(email);
     }
-
-    public void deletePostById(Long postID) {
-        postRepository.delete(this.findPostById(postID));
-    }
 }

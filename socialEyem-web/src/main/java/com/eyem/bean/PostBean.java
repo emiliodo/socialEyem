@@ -11,6 +11,7 @@ import com.eyem.services.PostService;
 import com.eyem.services.UsuarioService;
 import java.io.Serializable;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +50,6 @@ public class PostBean implements Serializable {
 
     public void borrarPost(Post p) {
         postService.deletePost(p);
-        System.out.println(p.getContenido());
     }
 
     public void replicarPost(Post p, String email) {
@@ -81,7 +81,8 @@ public class PostBean implements Serializable {
         Usuario u = usuarioService.buscarPorEmail(email);
         p.setContenido(contenido);
         String pattern = "https?:\\/\\/(?:[0-9A-Z-]+\\.)?(?:youtu\\.be\\/|youtube\\.com\\S*[^\\w\\-\\s])([\\w\\-]{11})(?=[^\\w\\-]|$)(?![?=&+%\\w]*(?:['\"][^<>]*>|<\\/a>))[?=&+%\\w]*";
-
+        List<String> mostraporvacio = new ArrayList<>();
+        
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = compiledPattern.matcher(imagen);
         while (matcher.find()) {
@@ -103,6 +104,7 @@ public class PostBean implements Serializable {
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);
         p.setCreador(u);
+        p.setMostradoPor(mostraporvacio);
 
         postService.crearPost(p);
         contenido = null;

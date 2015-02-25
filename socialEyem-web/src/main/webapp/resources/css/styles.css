@@ -11,6 +11,15 @@ body {
 .topspace {
     margin-top: 40px;
 }
+
+.tablagrupos{
+
+    padding: 4px 22px;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center
+}
 /*********************************************************************
  
 
@@ -348,7 +357,7 @@ img {
     background-color: #e61f65;
 }
 .btn-action {
-    
+
     font-weight: bold;
     background: transparent!important;
     border: 1px solid #333;

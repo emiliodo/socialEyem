@@ -20,4 +20,7 @@ public interface GrupoRepository extends MongoRepository<Grupo, Long>{
    
     @Query("{'listaUsuarios.email':?0}")
     public List<Grupo> findAllGrupoByEmailUser(String emailUser);
+    
+    @Query("{'idGrupo':?0}")
+    public Grupo buscarGrupoID(Long id);
 }

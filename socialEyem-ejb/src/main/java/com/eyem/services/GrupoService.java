@@ -25,6 +25,15 @@ public class GrupoService {
         grupoRepository.insert(g);
         return g;
     }
+     
+     public Grupo buscarGrupoPorId(Long id){
+         Grupo g = new Grupo();
+         g=grupoRepository.buscarGrupoID(id);
+         if(g == null){
+             return null;
+         }
+         return g;
+     }
 
      public List<Grupo> findAllGrupoByEmailUser(String emailUser){
          List<Grupo> listaGrupos = grupoRepository.findAllGrupoByEmailUser(emailUser);

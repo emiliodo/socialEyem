@@ -5,11 +5,42 @@
  */
 package com.eyem.entity;
 
+import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "usuario")
 public class Usuario {
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (this.numGrupos != other.numGrupos) {
+            return false;
+        }
+        if (!Objects.equals(this.imagen, other.imagen)) {
+            return false;
+        }
+        return true;
+    }
 
     //@Id
     

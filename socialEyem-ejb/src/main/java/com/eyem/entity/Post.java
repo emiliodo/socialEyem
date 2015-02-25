@@ -5,6 +5,7 @@
  */
 
 package com.eyem.entity;
+
 import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author YSF
  */
 @Document(collection="post")
-public class Post {
+public class Post implements Comparable<Post> {
  
  @Id
  private Long idPost;
@@ -94,6 +95,11 @@ public class Post {
 
     public void setCreador(Usuario creador) {
         this.creador = creador;
+    }
+
+    @Override
+    public int compareTo(Post o) {
+        return this.getIdPost().compareTo(o.getIdPost());
     }
  
 }

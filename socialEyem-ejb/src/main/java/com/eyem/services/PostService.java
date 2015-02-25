@@ -9,7 +9,6 @@ import com.eyem.entity.Post;
 import com.eyem.repository.PostRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +45,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
+            res.sort(null);
             return res;
         }
     }
@@ -69,6 +69,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
+            res.sort(null);
             return res;
         }
     }
@@ -78,12 +79,19 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
+            res.sort(null);
             return res;
         }
     }
 
     public List<Post> findPostReplicados(String email) {
-        return postRepository.findPostReplicados(email);
+        List<Post> res = postRepository.findPostReplicados(email);
+        if (res.isEmpty() || res.size() <= 0) {
+            return null;
+        } else {
+            res.sort(null);
+            return res;
+        }
     }
 
     public boolean reyemAnterior(Long idPost, String email) {

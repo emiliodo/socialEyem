@@ -99,7 +99,7 @@ public class Post implements Comparable<Post> {
 
     @Override
     public int compareTo(Post o) {
-        return this.getIdPost().compareTo(o.getIdPost());
+        return o.getIdPost().compareTo(this.getIdPost());
     }
  
 }

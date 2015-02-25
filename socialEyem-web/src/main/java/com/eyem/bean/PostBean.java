@@ -56,21 +56,15 @@ public class PostBean implements Serializable {
 
         Post reEyem;
         // buscar post por ID
-        reEyem = postService.findPostById(p.getIdPost());
-        
+        reEyem = postService.findPostById(p.getIdPost());    
         if (reEyem != null) {
-            
-            System.out.println("------------------------BUSCANDO POST POR ID "+p.getIdPost());
-            System.out.println("CONTENIDO:::::::\n"+reEyem.getContenido());
-            
-      
-//            // añadir email a la lista del campo post.compartidoPor
+            // añadir email a la lista del campo post.compartidoPor
             reEyem.getMostradoPor().add(email);
             
-//            // borrar el post segun el ID
-            //postService.deletePostById(p.getIdPost());
-//            // añadir el post temporal anteriormente creado
-            //System.out.println("-----------------------CREANDO POST NUEVOoooooooooooooo");
+            // borrar el post segun el ID
+            postService.deletePost(p);
+            // añadir el post temporal anteriormente creado
+ 
             postService.crearPost(reEyem);
         }
     }

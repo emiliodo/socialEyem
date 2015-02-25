@@ -56,14 +56,9 @@ public class PostService {
     public void deletePost(Post p) {
         postRepository.delete(p);
     }
-
-    public Post findPostById(Long postID) {
-        List<Post> res = postRepository.findPostById(postID);
-        if (res.isEmpty()){
-            return null;
-        }else{
-            return res.get(0);
-        }
+    
+    public Post findPostById(Long postID){
+        return postRepository.findOne(postID);
     }
 
     public List<Post> findAllPostByEmailUser(String emailUser) {

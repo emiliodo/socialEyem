@@ -21,26 +21,52 @@
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
-                        <h1>GRUPO #{grupoBean.grupoSeleccionado.nombreGrupo}</h1>
+                        <!--Titulo grupo-->
+                        <div align="center" style="margin: 10px 0px 15px 0px">
+                            <h2 id="titulopagina">GRUPO</h2><br/>
+                            <h4 id="titulopagina">#{grupoBean.grupoSeleccionado.nombreGrupo}</h4>
+                        </div>
+
                         <h:panelGroup id="cont" layout="block">
-                            <ui:fragment rendered="#{usuarioBean.email eq grupoBean.grupoSeleccionado.creador.email}">
-                                <h:button  outcome="editarGrupo.xhtml" class="btn-action" value="Editar">
-                                    <f:param name="editandoGrupo" value="#{grupoBean.grupoSeleccionado.idGrupo}" />
-                                </h:button>
-                            </ui:fragment>
+                            
+                            
+                            
+                            
+                            
+                            <!--MARIA'S HELP--> 
+                            <!--Nombre del admin del grupo-->
+                            <h:outputLabel style="left: auto">Admin: #{grupoBean.creador.nombre}</h:outputLabel>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <!--Boton editar-->
+                            <div align="right" style="margin: -30px 0px 15px 0px">
+                                <ui:fragment rendered="#{usuarioBean.email eq grupoBean.grupoSeleccionado.creador.email}">
+                                    <h:button  outcome="editarGrupo.xhtml" class="btn-action" value="Editar">
+                                        <f:param name="editandoGrupo" value="#{grupoBean.grupoSeleccionado.idGrupo}" />
+                                    </h:button>
+                                </ui:fragment>
+                            </div>
+                            <!--Boton salir del grupo-->
                             <h:form>
-                            <ui:fragment rendered="#{usuarioBean.email ne grupoBean.grupoSeleccionado.creador.email}">
-                                <h:commandButton  action="#{grupoBean.salirGrupo()}" class="btn-action" value="Salir del grupo">
-                                    <f:setPropertyActionListener target="#{grupoBean.idGrupo}" value="#{grupoBean.grupoSeleccionado.id}"/>
-                                </h:commandButton>
-                            </ui:fragment>
+                                <div align="right">
+                                    <ui:fragment rendered="#{usuarioBean.email ne grupoBean.grupoSeleccionado.creador.email}">
+                                        <h:commandButton  action="#{grupoBean.salirGrupo()}" class="btn-action" value="Salir del grupo">
+                                            <f:setPropertyActionListener target="#{grupoBean.idGrupo}" value="#{grupoBean.grupoSeleccionado.id}"/>
+                                        </h:commandButton>
+                                    </ui:fragment>
+                                </div>
                             </h:form>
-                            <h:outputLabel value="Usuarios del grupo"/>
-                            <br/>
-                            <br/>
-                            <ui:repeat var="usuario" value="#{grupoBean.listaUsuarios}">
-                                <h:graphicImage class="img-circle-small" value="#{usuario.imagen}" alt="imagen del usuario #{usuario.nombre}"/>
-                            </ui:repeat>
+
+                            <div align="center">
+                                <h:outputLabel value="Participantes"/><br/><br/>
+                                <ui:repeat var="usuario" value="#{grupoBean.listaUsuarios}">
+                                    <h:graphicImage class="img-circle-small" value="#{usuario.imagen}" alt="imagen del usuario #{usuario.nombre}"/>
+                                </ui:repeat>
+                            </div>
                             <h:form id="form_crear">
                                 <div class="form-group">
                                     Contenido
@@ -96,8 +122,6 @@
                                     <hr/>
                                 </article>
                             </ui:repeat>
-
-
                         </h:panelGroup>
                     </div> 
                 </div>

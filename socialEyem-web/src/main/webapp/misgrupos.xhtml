@@ -14,24 +14,33 @@
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
-                        <h1>MIS GRUPOS</h1>
-                        <div align="center">
+                        <center><h2 id="titulopagina">MIS GRUPOS</h2></center><br/>
+
+                        <div align="left">
                             <h:form>
-                                <h:dataTable id="table1" value="#{grupoBean.listaGrupo}" var="grupo"
-                                             border="1">
+                                <h:dataTable id="table1" value="#{grupoBean.listaGrupo}" var="grupo" border="0">
                                     <h:column>
                                         <f:facet name="header">
-                                            <h:outputText value="Grupos a los que perteneces" />
+                                            <h:outputText value="Grupos a los que perteneces:"/><br/>
                                         </f:facet>
                                         <h:link outcome="mostrarGrupo" value="#{grupo.nombreGrupo}">
-                                            <f:param name="id" value="#{grupo.idGrupo}" />
+                                            <f:param name="id" value="#{grupo.idGrupo}"/>
                                         </h:link>
-                                    </h:column>
-                                </h:dataTable>
+                                        
+                                        
+                                        <!--MARIA'S HELP-->
+                                        <!--Nombre de los usuarios de un grupo-->
+                                        #{grupo.listaUsuarios}
+                                        
+                                        
+                                        
+                                        
+                                    </h:column><br/>
+                                </h:dataTable> <br/><br/>
                                 <h:button  outcome="crearGrupo.xhtml" class="btn-action" value="Crear Grupo"></h:button>
                             </h:form>
-                        </div><br/><br/> 
-                    </div> 
+                        </div> 
+                    </div>
                 </div>
             </div>
         </main>

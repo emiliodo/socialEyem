@@ -15,22 +15,24 @@
                     <div class="col-sm-8 col-sm-offset-2">
 
                         <h1 align="center">MIS GRUPOS</h1><br/>
-                        <div align="left">
+                        <div>
+
                             <h:form>
                                 <h:outputLabel value="Nombre Grupo:   "> </h:outputLabel>
                                 <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
+
                                 Lista de usuarios: <br/>
-                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear" layout="vertical">
+                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear" layout="pageDirection">
                                     <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
-                                </h:selectManyCheckbox>
+                                </h:selectManyCheckbox> <br/>
 
                                 <h:commandButton action="#{grupoBean.crearGrupo}" class="btn-action" value="Crear"></h:commandButton>
                             </h:form>
+
                         </div><br/><br/> 
                     </div> 
                 </div>
             </div>
         </main>
-
     </ui:define>
 </ui:composition>

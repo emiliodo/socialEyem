@@ -11,10 +11,10 @@
 
         <head>
             <script>
-                document.title = "Ver perfil de #{postBean.dameNombreDe(postBean.userEmailPerfil)}";
+                document.title = "Ver perfil de #{verPerfilBean.dameNombreDe(verPerfilBean.userEmailPerfil)}";
             </script>
         </head>
-        
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
@@ -23,16 +23,16 @@
                         <div id="verperfil" class="parallax" parallax-speed="1">
                             <h1 id="logo" class="text-center">
                                 <!--Imagen del usuario logeado-->
-                                <h:graphicImage class="img-circle" value="#{postBean.dameImagenDe(postBean.userEmailPerfil)}" alt="Mi imagen de perfil"/>
+                                <h:graphicImage class="img-circle" value="#{verPerfilBean.dameImagenDe(verPerfilBean.userEmailPerfil)}" alt="Mi imagen de perfil"/>
                             </h1>
                             <center>
-                                <h3>#{postBean.dameNombreDe(postBean.userEmailPerfil)}</h3>
+                                <h3>#{verPerfilBean.dameNombreDe(verPerfilBean.userEmailPerfil)}</h3>
                             </center>
                         </div>
 
                         <h:panelGroup id="cont" layout="block">
 
-                            <ui:repeat var="p" value="#{postBean.listaPostUsuario(postBean.userEmailPerfil,'publico')}">
+                            <ui:repeat var="p" value="#{verPerfilBean.listaPostUsuario(verPerfilBean.userEmailPerfil, 'publico')}">    
 
                                 <article class="post">
                                     <header class="entry-header">

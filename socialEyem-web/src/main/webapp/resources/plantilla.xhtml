@@ -61,15 +61,14 @@
                             <li><a href="mieyem.xhtml">mi EYEM</a></li>
                             <li><a href="misgrupos.xhtml">mis grupos</a></li>
                         </ul>
-                        
+
                         <!--Buscador-->
                         <div>
                             <h:form>
-                                <h:inputText id="caja" class="buscador" value="#{postBean.userEmailPerfil}"  />
-                                <h:commandLink class="buscador2"  action="#{postBean.buscarUsuario()}">
-                                    <h:graphicImage height="20" width="20" library="images" name="icona_cerca.png" alt="buscar" />
-                                </h:commandLink>
-                                    
+                                <h:inputText id="caja" class="buscador" value="#{verPerfilBean.userEmailPerfil}"  />
+                                    <h:commandLink class="buscador2"  action="#{verPerfilBean.buscarUsuario()}">
+                                        <h:graphicImage height="20" width="20" library="images" name="icona_cerca.png" alt="buscar" />
+                                    </h:commandLink>
                             </h:form>
                         </div>
 

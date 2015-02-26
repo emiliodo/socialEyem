@@ -72,15 +72,27 @@ public class VerPerfilBean implements Serializable {
     }
 
     public String dameImagenDe(String e) {
-        return usuarioService.buscarPorEmail(e).getImagen();
+        if (e != null && !e.isEmpty() && usuarioService.buscarPorEmail(e) != null) {
+            return usuarioService.buscarPorEmail(e).getImagen();
+        } else {
+            return null;
+        }
     }
 
     public String dameNombreDe(String e) {
-        return usuarioService.buscarPorEmail(e).getNombre();
+        if (e != null && !e.isEmpty() && usuarioService.buscarPorEmail(e) != null) {
+            return usuarioService.buscarPorEmail(e).getNombre();
+        } else {
+            return null;
+        }
     }
 
     public String dameEmailDe(String e) {
-        return usuarioService.buscarPorEmail(e).getEmail();
+        if (e != null && !e.isEmpty() && usuarioService.buscarPorEmail(e) != null) {
+            return usuarioService.buscarPorEmail(e).getEmail();
+        } else {
+            return null;
+        }
     }
 
     public List<Post> listaPostUsuario(String email, String tipo) {

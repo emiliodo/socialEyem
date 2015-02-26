@@ -23,16 +23,19 @@
 
 
                         <h:panelGroup id="cont" layout="block">
-                            <h:form id="form_crear">
+                            <h:form id="form_crear" enctype="multipart/form-data" prependId="false">
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="4" value="#{postBean.contenido}"/>
                                 </div>
                                 <div class="form-group">
-                                    url multimedia
+                                    URL (Youtube o imagen)
                                     <h:inputTextarea rows="1" class="form-control" value="#{postBean.imagen}" />
                                 </div>
-
+                                <div class="form-group">
+                                    Upload photo:
+                                    <h:inputFile id="file" value="#{postBean.uploadedFile}"/>
+                                </div>
                                 <div align="right">  
                                     <h:commandButton class="btn-action" type="submit" value="eyem it">
                                         <f:ajax execute="@form" render="cont" listener="#{postBean.crearPost(usuarioBean.email , 'publico')}"/>

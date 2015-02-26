@@ -20,8 +20,8 @@
                 <div class="row topspace">
                     <center><h2 id="titulopagina">TIMELINE</h2></center><br/>
                     <div class="col-sm-8 col-sm-offset-2">
-                        
-                        
+
+
                         <h:panelGroup id="cont" layout="block">
                             <h:form id="form_crear">
                                 <div class="form-group">
@@ -46,7 +46,7 @@
                                         <!--Usuario del post-->
                                         <h:form>
                                             <h:graphicImage class="img-circle-small" value="#{p.creador.imagen}" alt="imagen del usuario #{p.creador.nombre}"/>
-                                            <h:commandLink action="#{postBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
+                                            <h:commandLink action="#{verPerfilBean.verPerfil(p.creador.email)}" rel="bookmark">#{p.creador.nombre}</h:commandLink>
                                         </h:form>                                    
                                     </header>
                                     <!--Imagen del post-->

@@ -23,14 +23,23 @@
 
                         <h1>GRUPO #{grupoBean.grupoSeleccionado.nombreGrupo}</h1>
                         <h:panelGroup id="cont" layout="block">
-                            <h:button  outcome="editarGrupo.xhtml" class="btn-action" value="Editar">
-                                <f:param name="editandoGrupo" value="#{grupoBean.grupoSeleccionado.idGrupo}" />
-                            </h:button>
+                            <ui:fragment rendered="#{usuarioBean.email eq grupoBean.grupoSeleccionado.creador.email}">
+                                <h:button  outcome="editarGrupo.xhtml" class="btn-action" value="Editar">
+                                    <f:param name="editandoGrupo" value="#{grupoBean.grupoSeleccionado.idGrupo}" />
+                                </h:button>
+                            </ui:fragment>
+                            <h:form>
+                            <ui:fragment rendered="#{usuarioBean.email ne grupoBean.grupoSeleccionado.creador.email}">
+                                <h:commandButton  action="#{grupoBean.salirGrupo()}" class="btn-action" value="Salir del grupo">
+                                    <f:setPropertyActionListener target="#{grupoBean.idGrupo}" value="#{grupoBean.grupoSeleccionado.id}"/>
+                                </h:commandButton>
+                            </ui:fragment>
+                            </h:form>
                             <h:outputLabel value="Usuarios del grupo"/>
                             <br/>
                             <br/>
                             <ui:repeat var="usuario" value="#{grupoBean.listaUsuarios}">
-                                <h:graphicImage class="img-circle-small" value="#{usuario.imagen}" alt="imagen del usuario #{p.nombre}"/>
+                                <h:graphicImage class="img-circle-small" value="#{usuario.imagen}" alt="imagen del usuario #{usuario.nombre}"/>
                             </ui:repeat>
                             <h:form id="form_crear">
                                 <div class="form-group">

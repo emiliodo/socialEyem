@@ -38,9 +38,17 @@ public class GrupoService {
 
      public List<Grupo> buscarGrupoPorUsuario(String emailUser){
          List<Grupo> listaGrupos = grupoRepository.buscarGrupoPorUsuario(emailUser);
+         System.out.println("--------------------------lista grupos"+listaGrupos);
          if(listaGrupos.isEmpty()){
              return null;
          }
          return listaGrupos; 
+    }
+     
+     public void buscarGrupoIDSecundario(String id) {
+    }
+     
+     public void borrarGrupo(Grupo g) {
+        grupoRepository.delete(g);
     }
 }

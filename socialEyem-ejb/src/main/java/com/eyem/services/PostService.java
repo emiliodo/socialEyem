@@ -7,6 +7,7 @@ package com.eyem.services;
 
 import com.eyem.entity.Post;
 import com.eyem.repository.PostRepository;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,7 +36,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
-            res.sort(null);
+            Collections.sort(res);
             return res;
         }
     }
@@ -45,7 +46,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
-            res.sort(null);
+            Collections.sort(res);
             return res;
         }
     }
@@ -69,7 +70,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
-            res.sort(null);
+            Collections.sort(res);
             return res;
         }
     }
@@ -79,7 +80,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
-            res.sort(null);
+            Collections.sort(res);
             return res;
         }
     }
@@ -89,7 +90,7 @@ public class PostService {
         if (res.isEmpty() || res.size() <= 0) {
             return null;
         } else {
-            res.sort(null);
+            Collections.sort(res);
             return res;
         }
     }

@@ -6,16 +6,17 @@
 package com.eyem.entity;
 
 import java.util.List;
+import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- *
- * @author YSF
- */
+
 @Document(collection = "grupo")
 public class Grupo {
-
+    
+    @Id
+    private String id;
+    
     private Long idGrupo;
     private String nombreGrupo;
     private Usuario creador;
@@ -62,6 +63,44 @@ public class Grupo {
 
     public void setListaUsuarios(List<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Grupo other = (Grupo) obj;
+        if (!Objects.equals(this.idGrupo, other.idGrupo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreGrupo, other.nombreGrupo)) {
+            return false;
+        }
+        if (!Objects.equals(this.creador, other.creador)) {
+            return false;
+        }
+        if (!Objects.equals(this.listaUsuarios, other.listaUsuarios)) {
+            return false;
+        }
+        return true;
     }
 
 }

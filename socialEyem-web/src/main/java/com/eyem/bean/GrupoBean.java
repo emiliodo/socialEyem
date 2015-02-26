@@ -74,10 +74,9 @@ public class GrupoBean implements Serializable{
         System.out.println("ENTRo a postconstruct");
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         String idParam = externalContext.getRequestParameterMap().get("id");
-        ExternalContext externalContext2 = FacesContext.getCurrentInstance().getExternalContext();
-        String idCrear = externalContext2.getRequestParameterMap().get("creandoPost");
-        ExternalContext externalContext3 = FacesContext.getCurrentInstance().getExternalContext();
-        String idEditar = externalContext3.getRequestParameterMap().get("editandoGrupo");
+        String idCrear = externalContext.getRequestParameterMap().get("creandoPost");
+        String idEditar = externalContext.getRequestParameterMap().get("editandoGrupo");
+        String idEditado = externalContext.getRequestParameterMap().get("grupoEditado");
         
         //Si hace el postConstruct desde mostrar grupos O DESDE CREAR POST DE GRUPO
         if(idParam == null || idParam.equals("")){
@@ -104,9 +103,18 @@ public class GrupoBean implements Serializable{
                 usuariosParaAnadir = usuarioService.buscarTodos();
                 System.out.println("----------------------SIZE LISTA "+ usuariosParaAnadir.size());
                 usuariosParaAnadir.removeAll(listaUsuarios);
+                usuariosParaAnadir.remove(creador);
                 nombreGrupo = grupoSeleccionado.getNombreGrupo();
                 //usuariosParaAnadir = new ArrayList<>();
                 //para eliminar
+                usuariosSeleccionados = new ArrayList<>();
+            }
+            else if(idEditado != null){
+                System.out.println("ENTRA YA EDITADO -----ASDASDAS-----ASDASDASD");
+                idGrupo = Long.valueOf(idEditado);
+                listaGrupo= grupoService.buscarGrupoPorUsuario(usuarioBean.getEmail());
+                listaUsuarios = usuarioService.buscarTodos();
+                listaUsuarios.remove(creador);
                 usuariosSeleccionados = new ArrayList<>();
             }
             else{
@@ -160,6 +168,12 @@ public class GrupoBean implements Serializable{
         return lista;
     }
     
+    public String salirGrupo(){
+        System.out.println("  QUIERO SALIIIIIIIR DE AQUI");
+        System.out.println(" ------------------------"+idGrupo);
+        return "misgrupos";
+    }    
+        
     public String editarGrupo(){
         // Lista auxiliar para meter todos los usuarios d un grupo
         // y eliminar de ella los seleccionados que quiero eliminar
@@ -168,14 +182,16 @@ public class GrupoBean implements Serializable{
         //usuarios que ya pertenecen al grupo para eliminarlos
         this.usuariosSeleccionados = emailsToUsuarios(this.emailUsuariosSeleccionados);
         listaAux.removeAll(usuariosSeleccionados);
-        System.out.println("LISTA DE USUARIOS DESPUES DE BORRAR "+listaUsuarios.size());
+        System.out.println("LISTA DE USUARIOS DESPUES DE BORRAR  "+listaUsuarios.size());
         //En list Aux ya habría solo los usuarios q se mantienen en el grupo
         //añadimos los nuevos usuarios de grupo
         usuariosParaAnadir = emailsToUsuarios2(emailUsuariosSeleccionadosAnadir);
         listaAux.addAll(usuariosParaAnadir);
+        Grupo grupoBorrar = grupoService.buscarGrupoPorId(idGrupo);
+        grupoService.borrarGrupo(grupoBorrar);
         Grupo grupo = new Grupo();
         grupo.setCreador(creador);
-        grupo.setIdGrupo(System.currentTimeMillis());
+        grupo.setIdGrupo(idGrupo);
         grupo.setNombreGrupo(nombreGrupo);
         listaAux.add(creador);
         grupo.setListaUsuarios(listaAux);

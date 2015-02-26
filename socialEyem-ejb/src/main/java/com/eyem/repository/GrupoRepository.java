@@ -9,20 +9,11 @@ import com.eyem.entity.Grupo;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.stereotype.Repository;
-/**
-/**
- *
- * @author YSF
- */
-public interface GrupoRepository extends MongoRepository<Grupo, Long>{
-    
-   
+
+public interface GrupoRepository extends MongoRepository<Grupo, String>{
     @Query("{'listaUsuarios.email':?0}")
     public List<Grupo> buscarGrupoPorUsuario(String emailUser);
     
     @Query("{'idGrupo':?0}")
     public Grupo buscarGrupoID(Long id);
-    
-    
 }

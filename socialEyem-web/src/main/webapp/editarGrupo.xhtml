@@ -6,7 +6,11 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="resources/plantilla.xhtml">
-
+<h:head>
+        <f:metadata>
+            <f:viewParam name="grupoEditado" />
+        </f:metadata>
+    </h:head>
     <ui:define name="contenido">
 
         <main id="main">
@@ -31,7 +35,9 @@
                                 </h:selectManyCheckbox>
                                 </ui:fragment>
 
-                                <h:commandButton action="#{grupoBean.editarGrupo()}" class="btn-action" value="Editar"></h:commandButton>
+                                <h:commandButton action="#{grupoBean.editarGrupo()}" class="btn-action" value="Editar">
+                                    <f:param name="grupoEditado" value="#{grupoBean.idGrupo}" />
+                                </h:commandButton>
                             </h:form>
                         </div><br/><br/>
                     </div> 

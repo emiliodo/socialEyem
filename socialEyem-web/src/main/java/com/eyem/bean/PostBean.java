@@ -9,6 +9,7 @@ import com.eyem.entity.Post;
 import com.eyem.entity.Usuario;
 import com.eyem.services.PostService;
 import com.eyem.services.UsuarioService;
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,6 +44,7 @@ public class PostBean implements Serializable {
     private Usuario creador;
     private String fechaCreacion;
     private String userEmailPerfil;
+    private Part uploadedFile;
 
     @PostConstruct
     public void init() {
@@ -50,6 +53,14 @@ public class PostBean implements Serializable {
 
     public void borrarPost(Post p) {
         postService.deletePost(p);
+    }
+
+    public Part getUploadedFile() {
+        return uploadedFile;
+    }
+
+    public void setUploadedFile(Part uploadedFile) {
+        this.uploadedFile = uploadedFile;
     }
 
     public void replicarPost(Post p, String email) {
@@ -84,25 +95,39 @@ public class PostBean implements Serializable {
         List<String> mostraporvacio = new ArrayList<>();
 
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = compiledPattern.matcher(imagen);
-        while (matcher.find()) {
-            System.out.println(matcher.group());
-            video = matcher.group();
-            imagen = null;
-            if (video.contains("/embed/")) {
-                p.setVideo(video);
+        Logger.getLogger(PostBean.class.getName()).info("OK1");
+        if (uploadedFile != null) {
+            System.out.println(uploadedFile.getName());
+            try {
+                long uniqueName = System.currentTimeMillis();
+                uploadedFile.write(uniqueName + ".jpg");
+
+                p.setImagen("resources/uploads/" + uniqueName + ".jpg");
+                imagen = null;
+            } catch (IOException ex) {
+                Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex);
+                Matcher matcher = compiledPattern.matcher(imagen);
+                while (matcher.find()) {
+                    System.out.println(matcher.group());
+                    video = matcher.group();
+                    imagen = null;
+                    if (video.contains("/embed/")) {
+                        p.setVideo(video);
+                    }
+                }
             }
         }
-        if (null != imagen) {
+
+        if (null != imagen && !imagen.isEmpty()) {
             try {
                 java.net.URL url = new java.net.URL(imagen);
-                Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, url.toString() + " subido por " + u.getEmail());
+                Logger.getLogger(PostBean.class.getName()).log(Level.INFO, null, url.toString() + " subido por " + u.getEmail());
+                p.setImagen(imagen);
             } catch (MalformedURLException ex) {
                 Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex + " causado por " + u.getEmail());
-                imagen = null;
+                p.setImagen(null);
             }
-        }
-        p.setImagen(imagen);
+        } 
         p.setIdPost(System.currentTimeMillis());
         p.setTipo(tipo);
         p.setCreador(u);
@@ -111,6 +136,7 @@ public class PostBean implements Serializable {
         postService.crearPost(p);
         contenido = null;
         imagen = null;
+        uploadedFile = null;
 
     }
 
@@ -199,16 +225,16 @@ public class PostBean implements Serializable {
     public void setCreador(Usuario creador) {
         this.creador = creador;
     }
-    
-    public String buscarUsuario(){
+
+    public String buscarUsuario() {
         return "verPerfil?faces-redirect=true";
     }
-    
-    public String dameImagenDe(String e){
+
+    public String dameImagenDe(String e) {
         return usuarioService.buscarPorEmail(e).getImagen();
     }
-    
-        public String dameNombreDe(String e){
+
+    public String dameNombreDe(String e) {
         return usuarioService.buscarPorEmail(e).getNombre();
     }
 

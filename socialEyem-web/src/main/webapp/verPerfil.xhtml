@@ -16,55 +16,68 @@
         </head>
 
         <main id="main">
+
             <div class="container">
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
+                        <h:panelGroup rendered="#{not empty verPerfilBean.dameImagenDe(verPerfilBean.userEmailPerfil) }">
 
-                        <div id="verperfil" class="parallax" parallax-speed="1">
-                            <h1 id="logo" class="text-center">
-                                <!--Imagen del usuario logeado-->
-                                <h:graphicImage class="img-circle" value="#{verPerfilBean.dameImagenDe(verPerfilBean.userEmailPerfil)}" alt="Mi imagen de perfil"/>
-                            </h1>
-                            <center>
-                                <h3>#{verPerfilBean.dameNombreDe(verPerfilBean.userEmailPerfil)}</h3>
-                            </center>
-                        </div>
 
-                        <h:panelGroup id="cont" layout="block">
 
-                            <ui:repeat var="p" value="#{verPerfilBean.listaPostUsuario(verPerfilBean.userEmailPerfil, 'publico')}">    
+                            <div id="verperfil" class="parallax" parallax-speed="1">
+                                <h1 id="logo" class="text-center">
+                                    <!--Imagen del usuario logeado-->
+                                    <h:graphicImage class="img-circle" value="#{verPerfilBean.dameImagenDe(verPerfilBean.userEmailPerfil)}" alt="Mi imagen de perfil"/>
+                                </h1>
+                                <center>
+                                    <h3>#{verPerfilBean.dameNombreDe(verPerfilBean.userEmailPerfil)}</h3>
+                                </center>
+                            </div>
 
-                                <article class="post">
-                                    <header class="entry-header">
+                            <h:panelGroup id="cont" layout="block">
 
-                                        <!--Usuario del post-->
-                                        <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
-                                        #{p.creador.nombre}
-                                        <!--Hora-->                                        
-                                        <div class="fecha">
-                                            <h:outputText value="#{p.idPost}" >
-                                                <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
-                                            </h:outputText>
-                                        </div>
+                                <ui:repeat var="p" value="#{verPerfilBean.listaPostUsuario(verPerfilBean.userEmailPerfil, 'publico')}">    
 
-                                    </header>
+                                    <article class="post">
+                                        <header class="entry-header">
 
-                                    <!--Imagen del post-->
-                                    <h:panelGroup rendered="#{not empty p.imagen}">
-                                        <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
-                                        <br/><br/>
-                                    </h:panelGroup>
+                                            <!--Usuario del post-->
+                                            <img class="img-circle-small" src="#{p.creador.imagen}" alt=""/>
+                                            #{p.creador.nombre}
+                                            <!--Hora-->                                        
+                                            <div class="fecha">
+                                                <h:outputText value="#{p.idPost}" >
+                                                    <f:convertDateTime timeZone="GMT+1" pattern="dd MMM - HH:mm"/>
+                                                </h:outputText>
+                                            </div>
 
-                                    <!--Contenido del post-->
-                                    <p>#{p.contenido}</p> 
-                                    <hr/>
-                                </article>
-                            </ui:repeat>
+                                        </header>
 
+                                        <!--Imagen del post-->
+                                        <h:panelGroup rendered="#{not empty p.imagen}">
+                                            <h:graphicImage width="640" height="300" value="#{p.imagen}" alt="imagen del post" />
+                                            <br/><br/>
+                                        </h:panelGroup>
+
+                                        <!--Contenido del post-->
+                                        <p>#{p.contenido}</p> 
+                                        <hr/>
+                                    </article>
+                                </ui:repeat>
+
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        <h:panelGroup  rendered="#{empty verPerfilBean.dameImagenDe(verPerfilBean.userEmailPerfil) }">
+                            <div align="center">
+                                <h1 style="color: red; alignment-adjust: central ">USUARIO NO ENCONTRADO</h1>
+                                Búsqueda con el formato: email@servidor.com
+                            </div>
                         </h:panelGroup>
                     </div> 
                 </div>
             </div>
+
+
         </main>
 
     </ui:define>

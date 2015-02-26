@@ -23,19 +23,21 @@
                             <h:form>
                                 <h:outputLabel value="Nombre Grupo:   "> </h:outputLabel>
                                 <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
+                                
+                                
                                 Eliminar usuarios: <br/>
-                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="editar" layout="vertical">
+                                <h:panelGrid id="pg1">
+                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionadosEliminar}" id="editar" layout="vertical">
                                     <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
                                 </h:selectManyCheckbox>
-                                
-                                Agregar usuarios: <br/>
-                                <ui:fragment rendered="#{not empty grupoBean.usuariosParaAnadir}">
-                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionadosAnadir}" id="editar2" layout="vertical">
-                                    <f:selectItems  itemLabel="#{user2.email}" itemValue="#{user2.email}" value="#{grupoBean.usuariosParaAnadir}" var="user2" />
-                                </h:selectManyCheckbox>
-                                </ui:fragment>
+                                </h:panelGrid>
+                                <br/>
+ 
 
                                 <h:commandButton action="#{grupoBean.editarGrupo()}" class="btn-action" value="Editar">
+                                    <f:param name="grupoEditado" value="#{grupoBean.idGrupo}" />
+                                </h:commandButton>
+                                <h:commandButton action="#{grupoBean.borrarGrupo()}" class="btn-action" value="Eliminar grupo">
                                     <f:param name="grupoEditado" value="#{grupoBean.idGrupo}" />
                                 </h:commandButton>
                             </h:form>

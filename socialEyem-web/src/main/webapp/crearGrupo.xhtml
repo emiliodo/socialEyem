@@ -22,7 +22,7 @@
                                 <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
 
                                 Lista de usuarios: <br/>
-                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionados}" id="crear" layout="pageDirection">
+                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionadosEliminar}" id="crear" layout="pageDirection">
                                     <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
                                 </h:selectManyCheckbox> <br/>
 

@@ -35,7 +35,7 @@
                             
                             <!--MARIA'S HELP--> 
                             <!--Nombre del admin del grupo-->
-                            <h:outputLabel style="left: auto">Admin: #{grupoBean.creador.nombre}</h:outputLabel>
+                            <h:outputLabel style="left: auto">Admin: #{grupoBean.grupoSeleccionado.creador.nombre}</h:outputLabel>
                             
                             
                             
@@ -55,7 +55,7 @@
                                 <div align="right">
                                     <ui:fragment rendered="#{usuarioBean.email ne grupoBean.grupoSeleccionado.creador.email}">
                                         <h:commandButton  action="#{grupoBean.salirGrupo()}" class="btn-action" value="Salir del grupo">
-                                            <f:setPropertyActionListener target="#{grupoBean.idGrupo}" value="#{grupoBean.grupoSeleccionado.id}"/>
+                                            <f:param name="editandoGrupo" value="#{grupoBean.grupoSeleccionado.idGrupo}" />
                                         </h:commandButton>
                                     </ui:fragment>
                                 </div>
@@ -112,13 +112,7 @@
                                     <!--Contenido del post-->
                                     #{p.contenido}
                                     <!--iconos post-->
-                                    <div class="postfooter">
-                                        <h:form>
-                                            <h:commandLink action="#{grupoBean.replicarPost(p, p.creador.email)}">
-                                                <h:graphicImage height="23" width="23" library="images" name="reyem.png" alt="reyem" />
-                                            </h:commandLink>
-                                        </h:form>
-                                    </div>  
+                                    
                                     <hr/>
                                 </article>
                             </ui:repeat>

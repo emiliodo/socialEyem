@@ -96,7 +96,7 @@ public class PostBean implements Serializable {
 
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
         Logger.getLogger(PostBean.class.getName()).info("OK1");
-        if (uploadedFile != null) {
+        if (uploadedFile != null && uploadedFile.getSize()<20000) {
             System.out.println(uploadedFile.getName());
             try {
                 long uniqueName = System.currentTimeMillis();

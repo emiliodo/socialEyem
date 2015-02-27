@@ -20,6 +20,13 @@ body {
     border-style: solid;
     text-align: center
 }
+
+.navbar-collapse .logoeyem {
+    float: left;
+    margin: -55px 0px -35px 75px;
+    text-align: left;
+    width: 15%;
+}
 /*********************************************************************
  
 

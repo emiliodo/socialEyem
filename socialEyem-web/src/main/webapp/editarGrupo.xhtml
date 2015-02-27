@@ -6,10 +6,14 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="resources/plantilla.xhtml">
-<h:head>
+    <h:head>
         <f:metadata>
             <f:viewParam name="grupoEditado" />
         </f:metadata>
+        <script>
+            document.title = "Editar grupo #{grupoBean.nombreGrupo} ";
+        </script>
+
     </h:head>
     <ui:define name="contenido">
 
@@ -23,16 +27,14 @@
                             <h:form>
                                 <h:outputLabel value="Nombre Grupo:   "> </h:outputLabel>
                                 <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
-                                
-                                
+
                                 Eliminar usuarios: <br/>
                                 <h:panelGrid id="pg1">
-                                <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionadosEliminar}" id="editar" layout="vertical">
-                                    <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
-                                </h:selectManyCheckbox>
+                                    <h:selectManyCheckbox value="#{grupoBean.emailUsuariosSeleccionadosEliminar}" id="editar" layout="pageDirection">
+                                        <f:selectItems  itemLabel="#{user.email}" itemValue="#{user.email}" value="#{grupoBean.listaUsuarios}" var="user" />
+                                    </h:selectManyCheckbox>
                                 </h:panelGrid>
                                 <br/>
- 
 
                                 <h:commandButton action="#{grupoBean.editarGrupo()}" class="btn-action" value="Editar">
                                     <f:param name="grupoEditado" value="#{grupoBean.idGrupo}" />

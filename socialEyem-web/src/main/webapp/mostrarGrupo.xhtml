@@ -12,6 +12,11 @@
             <f:viewParam name="creandoPost" />
             <f:viewParam name="editandoGrupo" />
         </f:metadata>
+
+        <script>
+            document.title = "Mostrar grupo #{grupoBean.grupoSeleccionado.nombreGrupo} ";
+        </script>
+
     </h:head>
 
     <ui:define name="contenido">
@@ -28,20 +33,9 @@
                         </div>
 
                         <h:panelGroup id="cont" layout="block">
-                            
-                            
-                            
-                            
-                            
-                            <!--MARIA'S HELP--> 
-                            <!--Nombre del admin del grupo-->
+
                             <h:outputLabel style="left: auto">Admin: #{grupoBean.grupoSeleccionado.creador.nombre}</h:outputLabel>
-                            
-                            
-                            
-                            
-                            
-                            
+
                             <!--Boton editar-->
                             <div align="right" style="margin: -30px 0px 15px 0px">
                                 <ui:fragment rendered="#{usuarioBean.email eq grupoBean.grupoSeleccionado.creador.email}">
@@ -112,7 +106,7 @@
                                     <!--Contenido del post-->
                                     #{p.contenido}
                                     <!--iconos post-->
-                                    
+
                                     <hr/>
                                 </article>
                             </ui:repeat>

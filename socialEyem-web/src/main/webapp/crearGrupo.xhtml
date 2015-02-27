@@ -9,14 +9,19 @@
 
     <ui:define name="contenido">
 
+        <head>
+            <script>
+                document.title = "Crear grupo";
+            </script>
+        </head>
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
                     <div class="col-sm-8 col-sm-offset-2">
 
-                        <h1 align="center">MIS GRUPOS</h1><br/>
+                        <h1 align="center">CREAR GRUPO</h1><br/>
                         <div>
-
                             <h:form>
                                 <h:outputLabel value="Nombre Grupo:   "> </h:outputLabel>
                                 <h:inputText value="#{grupoBean.nombreGrupo}"></h:inputText><br/><br/>
@@ -28,7 +33,6 @@
 
                                 <h:commandButton action="#{grupoBean.crearGrupo}" class="btn-action" value="Crear"></h:commandButton>
                             </h:form>
-
                         </div><br/><br/> 
                     </div> 
                 </div>

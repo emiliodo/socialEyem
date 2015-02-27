@@ -9,6 +9,12 @@
 
     <ui:define name="contenido">
 
+        <head>
+            <script>
+                document.title = "mis grupos";
+            </script>
+        </head>
+
         <main id="main">
             <div class="container">
                 <div class="row topspace">
@@ -26,15 +32,6 @@
                                         <h:link outcome="mostrarGrupo" value="#{grupo.nombreGrupo}">
                                             <f:param name="id" value="#{grupo.idGrupo}"/>
                                         </h:link>
-                                        
-                                        
-                                        <!--MARIA'S HELP-->
-                                        <!--Nombre de los usuarios de un grupo-->
-                                        #{grupo.listaUsuarios}
-                                        
-                                        
-                                        
-                                        
                                     </h:column><br/>
                                 </h:dataTable> <br/><br/>
                                 <h:button  outcome="crearGrupo.xhtml" class="btn-action" value="Crear Grupo"></h:button>

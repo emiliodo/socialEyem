@@ -66,11 +66,17 @@
                         <div>
                             <h:form>
                                 <h:inputText id="caja" class="buscador" value="#{verPerfilBean.userEmailPerfil}"  />
-                                    <h:commandLink class="buscador2"  action="#{verPerfilBean.buscarUsuario()}">
-                                        <h:graphicImage height="20" width="20" library="images" name="icona_cerca.png" alt="buscar" />
-                                    </h:commandLink>
+                                <h:commandLink class="buscador2"  action="#{verPerfilBean.buscarUsuario()}">
+                                    <h:graphicImage height="20" width="20" library="images" name="icona_cerca.png" alt="buscar" />
+                                </h:commandLink>
                             </h:form>
                         </div>
+
+                        <!--Logo-->
+                        <div Class="logoeyem" >
+                            <h:graphicImage width="50" height="50" value="resources/images/logoeyem.png" alt="logo" />
+                        </div>
+
 
                     </div><!--/.nav-collapse -->			
                 </div>	

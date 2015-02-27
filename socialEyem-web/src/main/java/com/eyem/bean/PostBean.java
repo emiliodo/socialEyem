@@ -95,18 +95,19 @@ public class PostBean implements Serializable {
         List<String> mostraporvacio = new ArrayList<>();
 
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-        if (uploadedFile != null && uploadedFile.getSize()<20000) {
+        if (uploadedFile != null && uploadedFile.getSize()<20000 && uploadedFile.getSize()>10000) {
             System.out.println(uploadedFile.getName());
             try {
                 long uniqueName = System.currentTimeMillis();
                 uploadedFile.write(uniqueName + ".jpg");
-                Logger.getLogger(PostBean.class.getName()).log(Level.INFO, null, 
-                        uniqueName + ".jpg subido por " + email);
+
                 p.setImagen("resources/uploads/" + uniqueName + ".jpg");
                 imagen = null;
             } catch (IOException ex) {
                 Logger.getLogger(PostBean.class.getName()).log(Level.SEVERE, null, ex);
-                Matcher matcher = compiledPattern.matcher(imagen);
+            }
+        }
+        Matcher matcher = compiledPattern.matcher(imagen);
                 while (matcher.find()) {
                     System.out.println(matcher.group());
                     video = matcher.group();
@@ -114,8 +115,6 @@ public class PostBean implements Serializable {
                     if (video.contains("/embed/")) {
                         p.setVideo(video);
                     }
-                }
-            }
         }
 
         if (null != imagen && !imagen.isEmpty()) {

@@ -24,7 +24,7 @@
                     <div class="col-sm-8 col-sm-offset-2">
                         <h:panelGroup id="cont" layout="block">
                             <!--FORMULARIO AÑADIR POST-->
-                            <h:form id="form_crear">
+                            <h:form id="form_crear" enctype="multipart/form-data" prependId="false">
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="4" value="#{postBean.contenido}"/>

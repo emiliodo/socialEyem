@@ -95,13 +95,13 @@ public class PostBean implements Serializable {
         List<String> mostraporvacio = new ArrayList<>();
 
         Pattern compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-        Logger.getLogger(PostBean.class.getName()).info("OK1");
         if (uploadedFile != null && uploadedFile.getSize()<20000) {
             System.out.println(uploadedFile.getName());
             try {
                 long uniqueName = System.currentTimeMillis();
                 uploadedFile.write(uniqueName + ".jpg");
-
+                Logger.getLogger(PostBean.class.getName()).log(Level.INFO, null, 
+                        uniqueName + ".jpg subido por " + email);
                 p.setImagen("resources/uploads/" + uniqueName + ".jpg");
                 imagen = null;
             } catch (IOException ex) {

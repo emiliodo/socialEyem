@@ -61,7 +61,7 @@
                                     <h:graphicImage class="img-circle-small" value="#{usuario.imagen}" alt="imagen del usuario #{usuario.nombre}"/>
                                 </ui:repeat>
                             </div>
-                            <h:form id="form_crear">
+                            <h:form id="form_crear" enctype="multipart/form-data" prependId="false">
                                 <div class="form-group">
                                     Contenido
                                     <h:inputTextarea class="form-control" rows="4" value="#{grupoBean.contenido}"/>
